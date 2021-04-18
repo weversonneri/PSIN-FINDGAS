@@ -1,15 +1,16 @@
 const express = require('express');
+const routes = express.Router();
 const UserController = require('./app/controllers/UserController');
 const AuthController = require('./app/controllers/AuthController');
 const authMiddleware = require('./app/middlewares/authMiddleware');
+const MapController = require('./app/controllers/MapController');
 
-const routes = express.Router();
-
-routes.get('/users', authMiddleware, UserController.index);
+routes.get('/', MapController.index);
+routes.get('/users', UserController.create);
 routes.get('/users/:id', UserController.show);
 routes.post('/users', UserController.store);
-routes.put('/users', authMiddleware, UserController.update);
-routes.delete('/users', authMiddleware, UserController.delete);
+routes.put('/users', UserController.update);
+routes.delete('/users', UserController.delete);
 
 routes.post('/auth', AuthController.store);
 

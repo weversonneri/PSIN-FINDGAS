@@ -8,7 +8,7 @@ module.exports = {
         name: 'John Doe',
         email: 'admin@mail.com',
         scope_id: 1,
-        password_hash: 'admin',
+        password_hash: 'admins',
         created_at: new Date().toDateString(),
         updated_at: new Date().toDateString(),
       },

@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 const { User } = require('../models');
 const { Scope } = require('../models');
 
@@ -45,7 +44,8 @@ module.exports = {
       const { name, email, scope_id } = user;
 
       console.log({ name, email, scope_id });
-      return res.status(201).json({ name, email, scope_id });
+      return res.redirect("/api/")
+      //return res.status(201).json({ name, email, scope_id });
     } catch (error) {
       console.log(error);
 

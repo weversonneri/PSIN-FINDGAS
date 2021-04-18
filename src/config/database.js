@@ -3,7 +3,7 @@ module.exports = {
   host: 'localhost',
   username: 'postgres',
   password: 'docker',
-  database: 'mainbsystemdb',
+  database: 'psinmain',
   define: {
     timestamps: true,
     underscored: true,
