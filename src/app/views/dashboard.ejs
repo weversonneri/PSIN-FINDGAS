@@ -8,10 +8,17 @@
 </head>
 
 <body>
-  <h2>INDEX<h2>
+  <h2>DASHBOARD<h2>
+      <p>
+        <%= user.name %>
+          <%= user.email %>
+            <%= user.scope_id %>
+              <%= user.password_hash %>
+      </p>
 
-      <a href="/api/register">Register</a>
-      <a href="/api/login">Login</a>
+      <a href="/api/logout">Login</a>
+
+
 </body>
 
 </html>
