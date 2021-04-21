@@ -1,28 +1,29 @@
 const { User } = require('../models');
-const { Scope } = require('../models');
 
 module.exports = {
-  index(req, res) {
-    return res.render("register")
+  create(req, res) {
+    return res.render('register');
   },
 
-  /* async index(req, res) {
-     try {
-       const users = await User.findAll({
-         attributes: ['id', 'name', 'email'],
-         include: {
-           model: Scope,
-           attributes: ['name'],
-         },
-         raw: true,
-         nest: true,
-       });
-       return res.json(users);
-     } catch (error) {
-       console.log(error);
-       return res.json(error);
-     }
-   },*/
+  async index(req, res) {
+    return res.render('dashboard', { user: req.user });
+
+    /*  try {
+        const users = await User.findAll({
+          attributes: ['id', 'name', 'email'],
+          include: {
+            model: Scope,
+            attributes: ['name'],
+          },
+          raw: true,
+          nest: true,
+        });
+        return res.json(users);
+      } catch (error) {
+        console.log(error);
+        return res.json(error);
+      } */
+  },
 
   async show(req, res) {
     try {
@@ -48,8 +49,8 @@ module.exports = {
       const { name, email, scope_id } = user;
 
       console.log({ name, email, scope_id });
-      return res.redirect("/login")
-      //return res.status(201).json({ name, email, scope_id });
+      return res.redirect('/login');
+      // return res.status(201).json({ name, email, scope_id });
     } catch (error) {
       console.log(error);
 

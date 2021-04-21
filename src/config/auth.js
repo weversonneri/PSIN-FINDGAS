@@ -1,13 +1,15 @@
+/* eslint-disable indent */
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
 const { User } = require('../app/models');
 
+// eslint-disable-next-line func-names
 module.exports = function (passport) {
-
   passport.serializeUser((user, done) => {
     done(null, user.id);
   });
 
+  // eslint-disable-next-line consistent-return
   passport.deserializeUser(async (id, done) => {
     try {
       const user = await User.findByPk(id);
@@ -20,7 +22,7 @@ module.exports = function (passport) {
 
   passport.use(new LocalStrategy({
     usernameField: 'email',
-    passwordField: 'password'
+    passwordField: 'password',
   },
     async (email, password, done) => {
       try {
@@ -33,13 +35,12 @@ module.exports = function (passport) {
         const isValidPassword = await bcrypt.compare(password, user.password_hash);
 
         if (!isValidPassword) {
-          return done(null, false, { message: 'Incorrect email or password!' })
+          return done(null, false, { message: 'Incorrect email or password!' });
         }
 
-        return done(null, user)
+        return done(null, user);
       } catch (error) {
         done(error, false);
       }
-    }
-  ));
-}
+    }));
+};

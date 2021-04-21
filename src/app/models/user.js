@@ -56,6 +56,24 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
     },
+    latitude: {
+      type: DataTypes.DECIMAL,
+      defaultValue: '',
+      validate: {
+        notEmpty: {
+          msg: 'Esse campo não pode ser vazio',
+        },
+      },
+    },
+    longitude: {
+      type: DataTypes.DECIMAL,
+      defaultValue: '',
+      validate: {
+        notEmpty: {
+          msg: 'Esse campo não pode ser vazio',
+        },
+      },
+    },
   }, {
     sequelize,
     modelName: 'User',

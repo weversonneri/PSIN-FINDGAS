@@ -1,17 +1,18 @@
 module.exports = {
-  authMiddleware: function (req, res, next) {
+  // eslint-disable-next-line consistent-return
+  authMiddleware(req, res, next) {
     if (req.isAuthenticated()) {
       return next();
     }
 
     console.log('Login required!');
-    res.redirect("/api/login");
+    res.redirect('/login');
   },
 
-  notAuthMiddleware: function (req, res, next) {
+  notAuthMiddleware(req, res, next) {
     if (req.isAuthenticated()) {
-      res.redirect("/api/dashboard");
+      res.redirect('/dashboard');
     }
     return next();
-  }
-}
+  },
+};

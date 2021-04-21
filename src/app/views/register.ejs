@@ -1,20 +1,57 @@
-<!DOCTYPE <html>
-<html lang=”en”>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-  <meta charset=”UTF-8">
-  <title>TESTE</title>
-  <link rel=”stylesheet” type=”text/css” href=”/assets/colocoAquiMeu.css”>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin="" />
+
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+
+
+  <link rel="stylesheet" href="/styles/tailwind.css" />
+
 </head>
 
 <body>
   <h2>HeaderTitulo<h2>
-      <form id="users-form" method="post" action="/api/users">
+      <form id="users-form" method="post" action="/register">
         <input type="text" placeholder="Nome" name="name">
         <input type="email" placeholder="Email" name="email">
         <input type="password" placeholder="Senha" name="password">
+        <input type="text" placeholder="Latitude" name="latitude" id="latitude">
+        <input type="text" placeholder="Longitude" name="longitude" id="longitude">
         <button type="submit">Submit</button>
       </form>
+
+
+      <div id="mapid"></div>
+
+      <script src="/scripts/indexMap.js"></script>
+      <script>
+        let marker = null;
+
+
+        mymap.on('click', function (e) {
+          if (marker !== null) {
+            mymap.removeLayer(marker);
+          }
+          marker = L.marker(e.latlng).addTo(mymap);
+          let position = marker.getLatLng();
+          document.getElementById('latitude').value = position.lat;
+          document.getElementById('longitude').value = position.lng
+
+
+          console.log("You clicked the map at " + position.lat);
+          console.log("You clicked the map at " + position.lng);
+        });</script>
 </body>
 
 </html>
