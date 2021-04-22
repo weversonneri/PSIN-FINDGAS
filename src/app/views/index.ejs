@@ -12,42 +12,48 @@
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
     crossorigin=""></script>
-
-  <link rel="stylesheet" href="/styles/tailwind.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-geosearch@3.0.0/dist/geosearch.css" />
+  <link rel="stylesheet" href="/build/tailwind.css" />
+  <link rel="stylesheet" href="/styles/styles.css" />
 
 </head>
 
 <body>
-  <h2>INDEX<h2>
-
-      <a href="/register">Register</a>
-      <a href="/login">Login</a>
-
+  <h3 class="hello">INDEX<h3>
+      <h1 class="text-4xl font-bold text-center text-red-500">Hello World</h1>
+      <a href="/register">Registesdfr</a>
+      <a href="/login">Logsain</a>s
+      <button class="bg-green-500 rounded">Button</button>
 
 
       <div id="mapid"></div>
 
-
-      <script src="/scripts/indexMap.js"></script>
+      <script src="/reload/reload.js"></script>
       <script>
-        async function getData() {
-          const response = await fetch('http://localhost:3030/index/map');
-          const data = await response.json();
+        const mymap = L.map('mapid').setView([-15.7977541, -47.8997705], 12);
 
-          data.forEach((item) => {
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        }).addTo(mymap);
 
-            const marker = L.marker([item.latitude, item.longitude]).addTo(mymap);
+        getData = () => {
+          const locals = '<%- JSON.stringify(locals) %>';
 
-            const description = item.name;
+          JSON.parse(locals).forEach(local => {
+
+            const marker = L.marker([local.latitude, local.longitude]).addTo(mymap);
+
+            const description = local.name;
 
             marker.bindPopup(description);
           });
 
-          console.log(data);
+          // console.log(JSON.parse(locals));
         }
 
         getData();
       </script>
+
 </body>
 
 </html>
