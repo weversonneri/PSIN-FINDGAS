@@ -6,7 +6,7 @@ const AuthController = require('./app/controllers/AuthController');
 const MapController = require('./app/controllers/MapController');
 const { authMiddleware, notAuthMiddleware } = require('./app/middlewares/authMiddleware');
 
-routes.get('/index', MapController.index);
+routes.get('/', MapController.index);
 
 routes.get('/login', notAuthMiddleware, AuthController.index);
 routes.post('/login', notAuthMiddleware, AuthController.store);

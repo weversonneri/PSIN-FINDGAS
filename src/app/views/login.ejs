@@ -7,11 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
 
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/build/tailwind.css" />
+  <link rel="stylesheet" href="/styles/styles.css" />
   <link rel="stylesheet" href="/styles/tailwind.css" />
 
 </head>
 
-<body>
+<body class="bg-gray-200 font-title">
+
+  <header>
+    <%- include('components/header'); -%>
+  </header>
+
   <h2>HeaderTitulo<h2>
       <% if (messages.error) { %>
         <%= messages.error %>
@@ -23,7 +32,7 @@
             </form>
 
 
-
+            <script src="/scripts/script.js"></script>
 
 </body>
 

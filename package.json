@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/server.js",
-    "build:css": "tailwindcss build public/styles/tailwind.css -o public/build/tailwind.css"
+    "build:css": "tailwindcss build public/styles/tailwind.css -o public/build/tailwind.css",
+    "prod:css": "NODE_ENV=production tailwindcss build public/styles/tailwind.css -o public/build/tailwind.css"
   },
   "keywords": [],
   "author": "",
@@ -25,7 +26,8 @@
     "passport-local": "^1.0.0",
     "pg": "^8.6.0",
     "pg-hstore": "^2.3.3",
-    "sequelize": "^6.6.2"
+    "sequelize": "^6.6.2",
+    "tailwindcss": "^2.1.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.2.5",
@@ -33,7 +35,6 @@
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
     "postcss": "^8.2.10",
-    "sequelize-cli": "^6.2.0",
-    "tailwindcss": "^2.1.1"
+    "sequelize-cli": "^6.2.0"
   }
 }
