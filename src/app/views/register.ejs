@@ -23,26 +23,75 @@
 
 </head>
 
-<body class="bg-gray-200 font-title">
+<body class="bg-gray-100 font-title">
 
   <header>
     <%- include('components/header'); -%>
   </header>
 
   <main>
-    <h2>HeaderTitulo<h2>
-        <form id="users-form" method="post" action="/register">
-          <input type="text" placeholder="Nome" name="name">
-          <input type="email" placeholder="Email" name="email">
-          <input type="password" placeholder="Senha" name="password">
-          <input type="text" placeholder="Latitude" name="latitude" id="latitude">
-          <input type="text" placeholder="Longitude" name="longitude" id="longitude">
-          <button type="submit">Submit</button>
+    <section class=" bg-white p-12 rounded-md m-auto mt-10 w-3/4 max-w-3xl">
+
+      <h1 class=" m-4 md:m-7 text-2xl md:text-3xl text-center font-bold text-gray-700">
+        Dados
+      </h1>
+
+      <div>
+        <div class=" flex justify-center align-middle mt-4">
+          <div class="p-5 w-full max-w-xl bg-gray-100 mb-6 rounded">
+            <div id="mapid" class="w-auto h-44 md:h-52 rounded"></div>
+            <h3 class=" font-normal text-gray-600 text-xs md:text-sm text-center mt-3">Clique no mapa para adicionar a
+              localização
+            </h3>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <% if (messages.error) { %>
+          <%= messages.error %>
+            <% } %>
+        <form class=" w-full max-w-xl mx-auto" id="users-form" method="post" action="/register">
+
+          <div class=" ">
+            <label for="name" class="block mb-2 mt-4 text-sm md:text-base font-bold text-gray-500">Nome</label>
+            <input
+              class="rounded p-3 md:p-4 w-full flex-1 text-base md:text-lg text-gray-700 border-gray-200 bg-gray-100 focus:bg-gray-200 outline-none"
+              type="text" name="name" required />
+          </div>
+
+          <div class=" ">
+            <label for="email" class="block mb-2 mt-4 text-sm md:text-base font-bold text-gray-500">Email</label>
+            <input
+              class="rounded p-3 md:p-4 w-full flex-1 text-base md:text-lg text-gray-700 border-gray-200 bg-gray-100 focus:bg-gray-200 outline-none"
+              type="email" name="email" required />
+          </div>
+
+          <div class=" ">
+            <label for="password" class="block mb-2 mt-4 text-sm md:text-base font-bold text-gray-500">Senha</label>
+            <input
+              class="rounded p-3 md:p-4 w-full flex-1 text-base md:text-lg text-gray-700 border-gray-200 bg-gray-100 focus:bg-gray-200 outline-none"
+              type="password" name="password" required />
+          </div>
+
+          <div class=" ">
+            <label for="password" class="block mb-2 mt-4 text-sm md:text-base font-bold text-gray-500">Confirmar senha</label>
+            <input
+              class="rounded p-3 md:p-4 w-full flex-1 text-base md:text-lg text-gray-700 border-gray-200 bg-gray-100 focus:bg-gray-200 outline-none"
+              type="password" name="password" disabled="" />
+          </div>
+
+          <input class="rounded p-4 m-2 outline-none text-gray-700 border-gray-200 bg-white" type="text"
+            placeholder="Latitude" name="latitude" id="latitude">
+          <input class="rounded p-4 m-2 outline-none text-gray-700 border-gray-200 bg-white" type="text"
+            placeholder="Longitude" name="longitude" id="longitude">
+
+            <div class=" flex justify-center bg-indigo-500 w-full rounded hover:bg-indigo-800 mt-14 transition duration-500 transform hover:-translate-y-1 hover:scale-105">
+              <button class=" w-full p-3 text-base outline-none focus:outline-none border-transparent text-white" type="submit">Cadastrar</button>
+            </div>
         </form>
-
-
-        <div id="mapid"></div>
-
+      </div>
+    </section>
   </main>
 
   <footer>
