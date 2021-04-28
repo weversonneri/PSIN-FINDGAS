@@ -24,18 +24,19 @@ module.exports = function (passport) {
     usernameField: 'email',
     passwordField: 'password',
   },
+    // eslint-disable-next-line consistent-return
     async (email, password, done) => {
       try {
         const user = await User.findOne({ where: { email } });
 
         if (!user) {
-          return done(null, false, { message: 'User not found!' });
+          return done(null, false, { message: 'Usuario não encontrado!' });
         }
 
         const isValidPassword = await bcrypt.compare(password, user.password_hash);
 
         if (!isValidPassword) {
-          return done(null, false, { message: 'Incorrect email or password!' });
+          return done(null, false, { message: 'Email ou senha incorreta!' });
         }
 
         return done(null, user);

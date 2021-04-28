@@ -14,17 +14,16 @@ module.exports = (sequelize, DataTypes) => {
       User.belongsTo(models.Scope, {
         foreignKey: 'scope_id',
       });
+
+      User.hasMany(models.VendorData, {
+        foreignKey: 'user_id',
+      });
     }
   }
   User.init({
     name: {
       type: DataTypes.STRING,
       defaultValue: '',
-      validate: {
-        notEmpty: {
-          msg: 'Esse campo não pode ser vazio',
-        },
-      },
     },
     email: {
       type: DataTypes.STRING,
@@ -56,28 +55,10 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
     },
-    latitude: {
-      type: DataTypes.DECIMAL,
-      defaultValue: '',
-      validate: {
-        notEmpty: {
-          msg: 'Esse campo não pode ser vazio',
-        },
-      },
-    },
-    longitude: {
-      type: DataTypes.DECIMAL,
-      defaultValue: '',
-      validate: {
-        notEmpty: {
-          msg: 'Esse campo não pode ser vazio',
-        },
-      },
-    },
   }, {
     sequelize,
     modelName: 'User',
-    tableName: 'Users',
+    tableName: 'users',
   });
   User.addHook('beforeSave', async (user) => {
     if (user.password) {

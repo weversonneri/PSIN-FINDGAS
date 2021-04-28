@@ -1,8 +1,7 @@
-// eslint-disable-next-line
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('scopes', {
+    await queryInterface.createTable('vendor_data', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -12,6 +11,25 @@ module.exports = {
       name: {
         allowNull: false,
         type: Sequelize.STRING,
+      },
+      phone: {
+        type: Sequelize.STRING,
+      },
+      latitude: {
+        type: Sequelize.DECIMAL,
+      },
+      longitude: {
+        type: Sequelize.DECIMAL,
+      },
+      user_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'users',
+          key: 'id',
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       },
       created_at: {
         allowNull: false,
@@ -24,6 +42,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('scopes');
+    await queryInterface.dropTable('vendor_data');
   },
 };

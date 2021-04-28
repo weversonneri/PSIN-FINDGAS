@@ -26,10 +26,14 @@
 <body class="bg-gray-200 font-title">
 
   <header>
-    <%- include('components/header'); -%>
+    <%- include('../components/header'); -%>
   </header>
 
   <main>
+    <div class=" absolute right-0 top-0">
+      <%- include('../components/alerts'); -%>
+    </div>
+
     <section class=" flex justify-center align-middle bg-gray-100">
       <div class=" flex-col">
         <h1 class=" m-4 md:m-7 text-3xl md:text-4xl text-center font-bold text-gray-700">
@@ -55,7 +59,7 @@
   </main>
 
   <footer>
-    <%- include('components/footer'); %>
+    <%- include('../components/footer'); %>
   </footer>
 
 
@@ -78,7 +82,6 @@
         marker.bindPopup(description);
       });
 
-      // console.log(JSON.parse(locals));
     }
 
     getData();

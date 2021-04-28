@@ -2,28 +2,28 @@ const { User } = require('../models');
 
 module.exports = {
   create(req, res) {
-    return res.render('register');
+    return res.render('pages/register');
   },
 
-  async index(req, res) {
-    return res.render('dashboard', { user: req.user });
+  /* async index(req, res) {
+     return res.render('pages/dashboard', { user: req.user });
 
-    /*  try {
-        const users = await User.findAll({
-          attributes: ['id', 'name', 'email'],
-          include: {
-            model: Scope,
-            attributes: ['name'],
-          },
-          raw: true,
-          nest: true,
-        });
-        return res.json(users);
-      } catch (error) {
-        console.log(error);
-        return res.json(error);
-      } */
-  },
+       try {
+         const users = await User.findAll({
+           attributes: ['id', 'name', 'email'],
+           include: {
+             model: Scope,
+             attributes: ['name'],
+           },
+           raw: true,
+           nest: true,
+         });
+         return res.json(users);
+       } catch (error) {
+         console.log(error);
+         return res.json(error);
+
+   },} */
 
   async show(req, res) {
     try {
@@ -42,19 +42,26 @@ module.exports = {
 
   async store(req, res) {
     try {
-      const user = req.body;
+      const {
+        name,
+        email,
+        password,
+        confirmPassword,
+      } = req.body;
 
-      await User.create(user);
+      if (password !== confirmPassword) {
+        req.flash('error', 'As senhas nao coincidem');
+        return res.redirect('/register');
+      }
 
-      const { name, email, scope_id } = user;
+      await User.create({ name, email, password });
 
-      console.log({ name, email, scope_id });
-      return res.redirect('/login');
-      // return res.status(201).json({ name, email, scope_id });
+      req.flash('message', 'Cadastro realizado com sucesso!');
+      return res.status(201).redirect('/login');
     } catch (error) {
-      console.log(error);
-
-      return res.status(403).json(error);
+      // console.log(error);
+      req.flash('error', error.message);
+      return res.status(403).redirect('/register');
     }
   },
 

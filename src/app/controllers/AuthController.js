@@ -2,7 +2,7 @@ const passport = require('passport');
 
 module.exports = {
   index(req, res) {
-    return res.render('login');
+    return res.render('pages/login');
   },
 
   store(req, res, next) {

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/build/tailwind.css" />
+  <link rel="stylesheet" href="/styles/styles.css" />
+  <link rel="stylesheet" href="/styles/tailwind.css" />
+
+</head>
+
+<body class="bg-gray-100 font-title">
+
+  <header>
+    <%- include('../components/header'); -%>
+  </header>
+
+  <main>
+    <div class=" absolute right-0 top-0">
+      <%- include('../components/alerts'); -%>
+    </div>
+
+    <section class=" bg-white p-12 rounded-md m-auto mt-10 w-3/4 max-w-3xl">
+      <div>
+        <h1 class=" m-4 md:m-7 text-2xl md:text-3xl text-center font-bold text-gray-700">
+          Login
+        </h1>
+      </div>
+
+      <form class=" w-full max-w-xl mx-auto" id="users-form" method="post" action="/login">
+
+        <div class=" ">
+          <label for="email" class="block mb-2 mt-4 text-sm md:text-base font-bold text-gray-500">Email</label>
+          <input
+            class="rounded p-3 md:p-4 w-full flex-1 text-base md:text-lg text-gray-700 border-gray-200 bg-gray-100 focus:bg-gray-200 outline-none"
+            type="email" name="email" required />
+        </div>
+
+        <div class=" ">
+          <label for="password" class="block mb-2 mt-4 text-sm md:text-base font-bold text-gray-500">Senha</label>
+          <input
+            class="rounded p-3 md:p-4 w-full flex-1 text-base md:text-lg text-gray-700 border-gray-200 bg-gray-100 focus:bg-gray-200 outline-none"
+            type="password" name="password" required />
+        </div>
+
+        <div
+          class=" flex justify-center bg-indigo-500 w-full rounded hover:bg-indigo-800 mt-14 transition duration-500 transform hover:-translate-y-1 hover:scale-105">
+          <button class=" w-full p-3 text-base outline-none focus:outline-none border-transparent text-white"
+            type="submit">Enviar</button>
+        </div>
+      </form>
+    </section>
+
+  </main>
+
+
+  <script src="/scripts/script.js"></script>
+
+</body>
+
+</html>
