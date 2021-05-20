@@ -15,7 +15,6 @@ module.exports = function (passport) {
       const user = await User.findByPk(id);
       done(null, user);
     } catch (error) {
-      console.log(error);
       return done(error, null);
     }
   });

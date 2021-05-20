@@ -6,10 +6,19 @@ module.exports = {
   },
 
   store(req, res, next) {
-    passport.authenticate('local', {
-      successRedirect: '/dashboard',
-      failureRedirect: '/login',
-      failureFlash: true,
+    // eslint-disable-next-line consistent-return
+    passport.authenticate('local', (err, user) => {
+      if (err) { return next(err); }
+      if (!user) { return res.redirect('/login'); }
+      // eslint-disable-next-line no-shadow
+      req.logIn(user, (err) => {
+        if (err) { return next(err); }
+
+        if (user.scope_id === 1) {
+          return res.redirect('/admin-dashboard');
+        }
+        return res.redirect('/dashboard');
+      });
     })(req, res, next);
   },
 

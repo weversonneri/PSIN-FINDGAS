@@ -12,10 +12,16 @@ module.exports = {
       body: ['Open Sans'],
       title: ['Inter', 'sans-serif'],
     },
+    fill: (theme) => ({
+      red: theme('colors.red.500'),
+      green: theme('colors.green.500'),
+      blue: theme('colors.blue.500'),
+    }),
     extend: {},
   },
   variants: {
     extend: {
+      fill: ['hover', 'focus'],
       backgroundColor: ['active'],
     },
   },

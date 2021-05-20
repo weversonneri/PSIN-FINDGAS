@@ -40,7 +40,15 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
     },
-    scope_id: DataTypes.INTEGER,
+    scope_id: {
+      type: DataTypes.INTEGER,
+      defaultValue: '3',
+    },
+    subscription: {
+      type: DataTypes.ENUM('N', 'P'),
+      defaultValue: 'N',
+      allowNull: false,
+    },
     password_hash: {
       type: DataTypes.STRING,
       defaultValue: '',

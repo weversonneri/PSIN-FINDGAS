@@ -29,39 +29,46 @@
     <%- include('../components/sidebar'); -%>
   </section>
 
-  <main class=" flex">
+  <main>
     <div class=" absolute right-0 top-0">
       <%- include('../components/alerts'); -%>
     </div>
 
-    <section class=" bg-white p-12 rounded-md m-auto mt-10 w-3/4 max-w-xl lg:max-w-3xl">
-      <div>
+    <div>
 
-        <h2>Data<h2>
-            <p>
+      <h2>Data
+        <h2>
+          <h1>
 
-              <%= //user.name %>
 
-            </p>
-      </div>
 
-      <h1 class=" m-4 md:m-7 text-2xl md:text-3xl text-center font-bold text-gray-700">
-        Dados
-      </h1>
+          </h1>
+    </div>
 
-      <div>
-        <div class=" flex justify-center align-middle mt-4">
-          <div class="p-5 w-full max-w-xl bg-gray-100 mb-6 rounded">
-            <div id="mapid" class="w-auto h-44 md:h-52 rounded"></div>
-            <h3 class=" font-normal text-gray-600 text-xs md:text-sm text-center mt-3">Clique no mapa para adicionar a
-              localização
-            </h3>
+    <h1 class=" m-4 md:m-7 text-2xl md:text-3xl text-center font-bold text-gray-700">
+      Dados
+    </h1>
+
+    <section class=" xl:flex justify-between bg-white p-12 rounded-md m-auto mt-10 w-3/4 max-w-xl xl:max-w-full">
+      <div class=" xl:m-auto xl:flex-1">
+
+        <div>
+          <div class=" flex justify-center align-middle ">
+            <div class="p-5 w-full max-w-xl bg-gray-100 mb-6 mt-4 rounded xl:m-0 xl:w-full">
+              <div id="mapid" class="w-auto h-44 md:h-52 xl:h-80 rounded"></div>
+              <h3 class=" font-normal text-gray-600 text-xs md:text-sm text-center mt-3">Clique no mapa para adicionar a
+                localização
+              </h3>
+            </div>
           </div>
         </div>
       </div>
 
-      <div>
-        <form class=" w-full max-w-xl mx-auto" id="users-form" method="post" action="/register/data/<%= user.id %>">
+      <div class=" m-5"></div>
+
+      <div class="">
+        <form class=" w-full max-w-xl mx-auto xl:m-auto" id="address-form" method="post"
+          action="/vendordata/register/<%= user.id %>">
 
           <div class=" ">
             <label for="name" class="block mb-2 mt-4 text-sm md:text-base font-bold text-gray-500">Nome</label>
@@ -77,9 +84,9 @@
               type="number" name="phone" />
           </div>
 
-          <input class="rounded p-4 m-2 outline-none text-gray-700 border-gray-200 bg-white" type="text"
+          <input class=" hidden rounded p-4 m-2 outline-none text-gray-700 border-gray-200 bg-white" type="text"
             placeholder="Latitude" name="latitude" id="latitude">
-          <input class="rounded p-4 m-2 outline-none text-gray-700 border-gray-200 bg-white" type="text"
+          <input class=" hidden rounded p-4 m-2 outline-none text-gray-700 border-gray-200 bg-white" type="text"
             placeholder="Longitude" name="longitude" id="longitude">
 
           <div
@@ -116,8 +123,8 @@
       document.getElementById('longitude').value = position.lng
 
 
-      console.log("You clicked the map at " + position.lat);
-      console.log("You clicked the map at " + position.lng);
+      console.log("You clicked the map at lat: " + position.lat);
+      console.log("You clicked the map at lng: " + position.lng);
     });
   </script>
   <script src="/scripts/script.js"></script>

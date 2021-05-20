@@ -24562,8 +24562,40 @@ video {
   --tw-ring-opacity: 1;
 }
 
-.fill-current {
-  fill: currentColor;
+.fill-red {
+  fill: #ef4444;
+}
+
+.fill-green {
+  fill: #10b981;
+}
+
+.fill-blue {
+  fill: #3b82f6;
+}
+
+.hover\:fill-red:hover {
+  fill: #ef4444;
+}
+
+.hover\:fill-green:hover {
+  fill: #10b981;
+}
+
+.hover\:fill-blue:hover {
+  fill: #3b82f6;
+}
+
+.focus\:fill-red:focus {
+  fill: #ef4444;
+}
+
+.focus\:fill-green:focus {
+  fill: #10b981;
+}
+
+.focus\:fill-blue:focus {
+  fill: #3b82f6;
 }
 
 .stroke-current {
@@ -56262,8 +56294,40 @@ video {
     --tw-ring-opacity: 1;
   }
 
-  .sm\:fill-current {
-    fill: currentColor;
+  .sm\:fill-red {
+    fill: #ef4444;
+  }
+
+  .sm\:fill-green {
+    fill: #10b981;
+  }
+
+  .sm\:fill-blue {
+    fill: #3b82f6;
+  }
+
+  .sm\:hover\:fill-red:hover {
+    fill: #ef4444;
+  }
+
+  .sm\:hover\:fill-green:hover {
+    fill: #10b981;
+  }
+
+  .sm\:hover\:fill-blue:hover {
+    fill: #3b82f6;
+  }
+
+  .sm\:focus\:fill-red:focus {
+    fill: #ef4444;
+  }
+
+  .sm\:focus\:fill-green:focus {
+    fill: #10b981;
+  }
+
+  .sm\:focus\:fill-blue:focus {
+    fill: #3b82f6;
   }
 
   .sm\:stroke-current {
@@ -87803,8 +87867,40 @@ video {
     --tw-ring-opacity: 1;
   }
 
-  .md\:fill-current {
-    fill: currentColor;
+  .md\:fill-red {
+    fill: #ef4444;
+  }
+
+  .md\:fill-green {
+    fill: #10b981;
+  }
+
+  .md\:fill-blue {
+    fill: #3b82f6;
+  }
+
+  .md\:hover\:fill-red:hover {
+    fill: #ef4444;
+  }
+
+  .md\:hover\:fill-green:hover {
+    fill: #10b981;
+  }
+
+  .md\:hover\:fill-blue:hover {
+    fill: #3b82f6;
+  }
+
+  .md\:focus\:fill-red:focus {
+    fill: #ef4444;
+  }
+
+  .md\:focus\:fill-green:focus {
+    fill: #10b981;
+  }
+
+  .md\:focus\:fill-blue:focus {
+    fill: #3b82f6;
   }
 
   .md\:stroke-current {
@@ -119344,8 +119440,40 @@ video {
     --tw-ring-opacity: 1;
   }
 
-  .lg\:fill-current {
-    fill: currentColor;
+  .lg\:fill-red {
+    fill: #ef4444;
+  }
+
+  .lg\:fill-green {
+    fill: #10b981;
+  }
+
+  .lg\:fill-blue {
+    fill: #3b82f6;
+  }
+
+  .lg\:hover\:fill-red:hover {
+    fill: #ef4444;
+  }
+
+  .lg\:hover\:fill-green:hover {
+    fill: #10b981;
+  }
+
+  .lg\:hover\:fill-blue:hover {
+    fill: #3b82f6;
+  }
+
+  .lg\:focus\:fill-red:focus {
+    fill: #ef4444;
+  }
+
+  .lg\:focus\:fill-green:focus {
+    fill: #10b981;
+  }
+
+  .lg\:focus\:fill-blue:focus {
+    fill: #3b82f6;
   }
 
   .lg\:stroke-current {
@@ -150885,8 +151013,40 @@ video {
     --tw-ring-opacity: 1;
   }
 
-  .xl\:fill-current {
-    fill: currentColor;
+  .xl\:fill-red {
+    fill: #ef4444;
+  }
+
+  .xl\:fill-green {
+    fill: #10b981;
+  }
+
+  .xl\:fill-blue {
+    fill: #3b82f6;
+  }
+
+  .xl\:hover\:fill-red:hover {
+    fill: #ef4444;
+  }
+
+  .xl\:hover\:fill-green:hover {
+    fill: #10b981;
+  }
+
+  .xl\:hover\:fill-blue:hover {
+    fill: #3b82f6;
+  }
+
+  .xl\:focus\:fill-red:focus {
+    fill: #ef4444;
+  }
+
+  .xl\:focus\:fill-green:focus {
+    fill: #10b981;
+  }
+
+  .xl\:focus\:fill-blue:focus {
+    fill: #3b82f6;
   }
 
   .xl\:stroke-current {
@@ -182426,8 +182586,40 @@ video {
     --tw-ring-opacity: 1;
   }
 
-  .\32xl\:fill-current {
-    fill: currentColor;
+  .\32xl\:fill-red {
+    fill: #ef4444;
+  }
+
+  .\32xl\:fill-green {
+    fill: #10b981;
+  }
+
+  .\32xl\:fill-blue {
+    fill: #3b82f6;
+  }
+
+  .\32xl\:hover\:fill-red:hover {
+    fill: #ef4444;
+  }
+
+  .\32xl\:hover\:fill-green:hover {
+    fill: #10b981;
+  }
+
+  .\32xl\:hover\:fill-blue:hover {
+    fill: #3b82f6;
+  }
+
+  .\32xl\:focus\:fill-red:focus {
+    fill: #ef4444;
+  }
+
+  .\32xl\:focus\:fill-green:focus {
+    fill: #10b981;
+  }
+
+  .\32xl\:focus\:fill-blue:focus {
+    fill: #3b82f6;
   }
 
   .\32xl\:stroke-current {

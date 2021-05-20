@@ -8,6 +8,23 @@ module.exports = {
     });
   },
 
+  async show(req, res) {
+    try {
+      const { id } = req.params;
+      const user = req.user.id;
+
+      const datas = await VendorData.findOne({
+        where: { user_id: user, id },
+        attributes: ['id', 'name', 'phone', 'latitude', 'longitude'],
+      });
+      return res.render('pages/vendorData-edit', { user, datas });
+    } catch (error) {
+      req.flash('error', error.message);
+
+      return res.status(403).redirect('/dashboard');
+    }
+  },
+
   async store(req, res) {
     try {
       const { user_id } = req.params;
@@ -24,7 +41,14 @@ module.exports = {
         return res.status(400).json({ error: 'User not found' });
       }
 
-      console.log({ name, user_id });
+      const datas = await VendorData.findAll({
+        where: { user_id },
+      });
+
+      if (datas.length >= 1 && user.subscription === 'N') {
+        req.flash('message', 'NAO AUTO');
+        return res.redirect('/dashboard');
+      }
 
       await VendorData.create({
         name,
@@ -40,7 +64,51 @@ module.exports = {
       console.log(error);
       req.flash('error', error.message);
 
-      return res.status(403).redirect('/register');
+      return res.status(403).redirect('/dashboard');
+    }
+  },
+
+  async update(req, res) {
+    try {
+      const { id } = req.params;
+
+      const vendorData = await VendorData.findByPk(id);
+
+      if (!vendorData) {
+        return res.status(400).json({ error: 'Data not found!' });
+      }
+
+      const data = req.body;
+
+      await vendorData.update(data);
+
+      req.flash('message', 'Endereço atualizado');
+      return res.status(201).redirect('/dashboard');
+    } catch (error) {
+      req.flash('error', error.message);
+
+      return res.status(403).redirect('/dashboard');
+    }
+  },
+
+  async delete(req, res) {
+    try {
+      const { id } = req.params;
+
+      const vendorData = await VendorData.findByPk(id);
+
+      if (!vendorData) {
+        return res.status(400).json({ error: 'Data not found!' });
+      }
+
+      await vendorData.destroy();
+
+      req.flash('message', 'Endereço deletado');
+      return res.status(201).redirect('/dashboard');
+    } catch (error) {
+      req.flash('error', error.message);
+
+      return res.status(403).redirect('/dashboard');
     }
   },
 

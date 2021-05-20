@@ -6,16 +6,19 @@ module.exports = {
     return res.render('pages/dashboard', { user: req.user });
   },
 
+  async createAdmin(req, res) {
+    return res.render('pages/admin-dashboard', { user: req.user });
+  },
+
   async index(req, res) {
     try {
       const { id } = req.user;
-      // console.log('TESTEEEEEEEEE', id);
       const datas = await VendorData.findAll({
         where: { user_id: id },
-        attributes: ['name', 'phone', 'latitude', 'longitude'],
+        attributes: ['id', 'name', 'phone', 'latitude', 'longitude'],
       });
       // console.log(datas);
-      return res.render('pages/dashboard', { user: req.user, datas });
+      return res.render('pages/dashboard', { user: req.user, addresses: datas });
       // return res.render('pages/index', { locals: local });
       // return res.status(200).json(datas);
     } catch (error) {

@@ -8,10 +8,10 @@ module.exports = {
 
   async index(req, res) {
     try {
-      const local = await VendorData.findAll({ attributes: ['name', 'latitude', 'longitude'] });
+      const local = await VendorData.findAll({ attributes: ['name', 'phone', 'latitude', 'longitude'] });
 
-      return res.render('pages/index', { locals: local });
-      // return res.status(200).json(local);
+      // return res.render('pages/index', { locals: local });
+      return res.status(200).json(local);
     } catch (error) {
       return res.status(400).json(error);
     }

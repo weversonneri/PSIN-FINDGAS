@@ -10,7 +10,10 @@ module.exports = {
   },
 
   notAuthMiddleware(req, res, next) {
-    if (req.isAuthenticated()) {
+    if (req.isAuthenticated() && req.user.scope_id === 1) {
+      res.redirect('/admin-dashboard');
+    }
+    if (req.isAuthenticated() && req.user.scope_id === 3) {
       res.redirect('/dashboard');
     }
     return next();

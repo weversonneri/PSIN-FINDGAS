@@ -31,7 +31,7 @@ module.exports = {
 
       const user = await User.findOne({
         where: { id },
-        attributes: ['id', 'name', 'email', 'scope_id'],
+        attributes: ['id', 'name', 'email', 'scope_id', 'subscription'],
       });
 
       return res.json(user);
