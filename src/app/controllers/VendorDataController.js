@@ -17,7 +17,7 @@ module.exports = {
         where: { user_id: user, id },
         attributes: ['id', 'name', 'phone', 'latitude', 'longitude'],
       });
-      return res.render('pages/vendorData-edit', { user, datas });
+      return res.render('pages/vendorData-edit', { user: req.user, datas });
     } catch (error) {
       req.flash('error', error.message);
 

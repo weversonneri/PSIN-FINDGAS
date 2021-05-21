@@ -366,7 +366,7 @@ ul {
  */
 
 html {
-  font-family: ui-sans-serif, system-ui; /* 1 */
+  font-family: Ubuntu, ui-sans-serif, system-ui; /* 1 */
   line-height: 1.5; /* 2 */
 }
 
@@ -11644,7 +11644,7 @@ video {
 }
 
 .font-sans {
-  font-family: ui-sans-serif, system-ui;
+  font-family: Ubuntu, ui-sans-serif, system-ui;
 }
 
 .font-serif {
@@ -24562,40 +24562,16 @@ video {
   --tw-ring-opacity: 1;
 }
 
-.fill-red {
-  fill: #ef4444;
+.fill-current {
+  fill: currentColor;
 }
 
-.fill-green {
-  fill: #10b981;
+.hover\:fill-current:hover {
+  fill: currentColor;
 }
 
-.fill-blue {
-  fill: #3b82f6;
-}
-
-.hover\:fill-red:hover {
-  fill: #ef4444;
-}
-
-.hover\:fill-green:hover {
-  fill: #10b981;
-}
-
-.hover\:fill-blue:hover {
-  fill: #3b82f6;
-}
-
-.focus\:fill-red:focus {
-  fill: #ef4444;
-}
-
-.focus\:fill-green:focus {
-  fill: #10b981;
-}
-
-.focus\:fill-blue:focus {
-  fill: #3b82f6;
+.focus\:fill-current:focus {
+  fill: currentColor;
 }
 
 .stroke-current {
@@ -43389,7 +43365,7 @@ video {
   }
 
   .sm\:font-sans {
-    font-family: ui-sans-serif, system-ui;
+    font-family: Ubuntu, ui-sans-serif, system-ui;
   }
 
   .sm\:font-serif {
@@ -56294,40 +56270,16 @@ video {
     --tw-ring-opacity: 1;
   }
 
-  .sm\:fill-red {
-    fill: #ef4444;
+  .sm\:fill-current {
+    fill: currentColor;
   }
 
-  .sm\:fill-green {
-    fill: #10b981;
+  .sm\:hover\:fill-current:hover {
+    fill: currentColor;
   }
 
-  .sm\:fill-blue {
-    fill: #3b82f6;
-  }
-
-  .sm\:hover\:fill-red:hover {
-    fill: #ef4444;
-  }
-
-  .sm\:hover\:fill-green:hover {
-    fill: #10b981;
-  }
-
-  .sm\:hover\:fill-blue:hover {
-    fill: #3b82f6;
-  }
-
-  .sm\:focus\:fill-red:focus {
-    fill: #ef4444;
-  }
-
-  .sm\:focus\:fill-green:focus {
-    fill: #10b981;
-  }
-
-  .sm\:focus\:fill-blue:focus {
-    fill: #3b82f6;
+  .sm\:focus\:fill-current:focus {
+    fill: currentColor;
   }
 
   .sm\:stroke-current {
@@ -74962,7 +74914,7 @@ video {
   }
 
   .md\:font-sans {
-    font-family: ui-sans-serif, system-ui;
+    font-family: Ubuntu, ui-sans-serif, system-ui;
   }
 
   .md\:font-serif {
@@ -87867,40 +87819,16 @@ video {
     --tw-ring-opacity: 1;
   }
 
-  .md\:fill-red {
-    fill: #ef4444;
+  .md\:fill-current {
+    fill: currentColor;
   }
 
-  .md\:fill-green {
-    fill: #10b981;
+  .md\:hover\:fill-current:hover {
+    fill: currentColor;
   }
 
-  .md\:fill-blue {
-    fill: #3b82f6;
-  }
-
-  .md\:hover\:fill-red:hover {
-    fill: #ef4444;
-  }
-
-  .md\:hover\:fill-green:hover {
-    fill: #10b981;
-  }
-
-  .md\:hover\:fill-blue:hover {
-    fill: #3b82f6;
-  }
-
-  .md\:focus\:fill-red:focus {
-    fill: #ef4444;
-  }
-
-  .md\:focus\:fill-green:focus {
-    fill: #10b981;
-  }
-
-  .md\:focus\:fill-blue:focus {
-    fill: #3b82f6;
+  .md\:focus\:fill-current:focus {
+    fill: currentColor;
   }
 
   .md\:stroke-current {
@@ -106535,7 +106463,7 @@ video {
   }
 
   .lg\:font-sans {
-    font-family: ui-sans-serif, system-ui;
+    font-family: Ubuntu, ui-sans-serif, system-ui;
   }
 
   .lg\:font-serif {
@@ -119440,40 +119368,16 @@ video {
     --tw-ring-opacity: 1;
   }
 
-  .lg\:fill-red {
-    fill: #ef4444;
+  .lg\:fill-current {
+    fill: currentColor;
   }
 
-  .lg\:fill-green {
-    fill: #10b981;
+  .lg\:hover\:fill-current:hover {
+    fill: currentColor;
   }
 
-  .lg\:fill-blue {
-    fill: #3b82f6;
-  }
-
-  .lg\:hover\:fill-red:hover {
-    fill: #ef4444;
-  }
-
-  .lg\:hover\:fill-green:hover {
-    fill: #10b981;
-  }
-
-  .lg\:hover\:fill-blue:hover {
-    fill: #3b82f6;
-  }
-
-  .lg\:focus\:fill-red:focus {
-    fill: #ef4444;
-  }
-
-  .lg\:focus\:fill-green:focus {
-    fill: #10b981;
-  }
-
-  .lg\:focus\:fill-blue:focus {
-    fill: #3b82f6;
+  .lg\:focus\:fill-current:focus {
+    fill: currentColor;
   }
 
   .lg\:stroke-current {
@@ -138108,7 +138012,7 @@ video {
   }
 
   .xl\:font-sans {
-    font-family: ui-sans-serif, system-ui;
+    font-family: Ubuntu, ui-sans-serif, system-ui;
   }
 
   .xl\:font-serif {
@@ -151013,40 +150917,16 @@ video {
     --tw-ring-opacity: 1;
   }
 
-  .xl\:fill-red {
-    fill: #ef4444;
+  .xl\:fill-current {
+    fill: currentColor;
   }
 
-  .xl\:fill-green {
-    fill: #10b981;
+  .xl\:hover\:fill-current:hover {
+    fill: currentColor;
   }
 
-  .xl\:fill-blue {
-    fill: #3b82f6;
-  }
-
-  .xl\:hover\:fill-red:hover {
-    fill: #ef4444;
-  }
-
-  .xl\:hover\:fill-green:hover {
-    fill: #10b981;
-  }
-
-  .xl\:hover\:fill-blue:hover {
-    fill: #3b82f6;
-  }
-
-  .xl\:focus\:fill-red:focus {
-    fill: #ef4444;
-  }
-
-  .xl\:focus\:fill-green:focus {
-    fill: #10b981;
-  }
-
-  .xl\:focus\:fill-blue:focus {
-    fill: #3b82f6;
+  .xl\:focus\:fill-current:focus {
+    fill: currentColor;
   }
 
   .xl\:stroke-current {
@@ -169681,7 +169561,7 @@ video {
   }
 
   .\32xl\:font-sans {
-    font-family: ui-sans-serif, system-ui;
+    font-family: Ubuntu, ui-sans-serif, system-ui;
   }
 
   .\32xl\:font-serif {
@@ -182586,40 +182466,16 @@ video {
     --tw-ring-opacity: 1;
   }
 
-  .\32xl\:fill-red {
-    fill: #ef4444;
+  .\32xl\:fill-current {
+    fill: currentColor;
   }
 
-  .\32xl\:fill-green {
-    fill: #10b981;
+  .\32xl\:hover\:fill-current:hover {
+    fill: currentColor;
   }
 
-  .\32xl\:fill-blue {
-    fill: #3b82f6;
-  }
-
-  .\32xl\:hover\:fill-red:hover {
-    fill: #ef4444;
-  }
-
-  .\32xl\:hover\:fill-green:hover {
-    fill: #10b981;
-  }
-
-  .\32xl\:hover\:fill-blue:hover {
-    fill: #3b82f6;
-  }
-
-  .\32xl\:focus\:fill-red:focus {
-    fill: #ef4444;
-  }
-
-  .\32xl\:focus\:fill-green:focus {
-    fill: #10b981;
-  }
-
-  .\32xl\:focus\:fill-blue:focus {
-    fill: #3b82f6;
+  .\32xl\:focus\:fill-current:focus {
+    fill: currentColor;
   }
 
   .\32xl\:stroke-current {

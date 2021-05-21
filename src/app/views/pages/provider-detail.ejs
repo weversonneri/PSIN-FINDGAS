@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalhes</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin="" />
+
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/build/tailwind.css" />
+  <link rel="stylesheet" href="/styles/styles.css" />
+  <link rel="stylesheet" href="/styles/tailwind.css" />
+
+</head>
+
+<body class="bg-gray-100 font-title">
+
+  <%- include('../components/arrow-header', { title: 'Detalhes' }); -%>
+
+    <main>
+      <div class=" absolute right-0 top-0">
+        <div>
+          <% if (messages.error) { %>
+            <%= messages.error %>
+              <% } %>
+        </div>
+      </div>
+
+      <h1 class=" m-4 md:m-7 text-2xl md:text-3xl text-center font-bold text-gray-700">
+        Detalhes da distribuidora
+      </h1>
+
+      <section
+        class=" md:flex flex-wrap justify-between bg-white p-12 rounded-md m-auto mt-10 w-3/4 max-w-md md:w-10/12 md:max-w-full xl:max-w-5xl ">
+        <div class=" md:m-auto md:flex-1">
+
+          <div>
+            <div class=" flex justify-center align-middle ">
+              <div class="p-5 w-full max-w-xl bg-gray-100 mb-6 mt-4 rounded xl:m-0 xl:w-full">
+                <div id="mapid" class="w-auto h-44 md:h-52 xl:h-80 rounded"></div>
+                <h3 class=" font-normal text-gray-600 text-xs md:text-sm text-center mt-3">
+                  <a target="_blank" rel="noopener noreferrer"
+                    href="https://www.google.com/maps/dir/?api=1&destination=<%= data.latitude %>,<%= data.longitude %>">
+                    Ver
+                    rotas no Google Maps
+                  </a>
+
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class=" m-5"></div>
+
+        <div class=" md:flex-1 max-w-md">
+          <form class=" w-full max-w-xl mx-auto xl:m-auto" id="address-edit-form">
+
+            <div class=" ">
+              <label for=" name" class="block mb-2 mt-4 text-sm md:text-base font-bold text-gray-500"
+                readonly>Nome</label>
+              <input
+                class="rounded p-3 md:p-4 w-full flex-1 text-base md:text-lg text-gray-700 border-gray-200 bg-gray-100  outline-none"
+                type="text" name="name" value="<%=data.name %>" readonly />
+            </div>
+
+            <div class=" ">
+              <label for="phone" class="block mb-2 mt-4 text-sm md:text-base font-bold text-gray-500">Telefone</label>
+              <input
+                class="rounded p-3 md:p-4 w-full flex-1 text-base md:text-lg text-gray-700 border-gray-200 bg-gray-100 focus:bg-gray-200 outline-none"
+                type="number" name="phone" value="<%= data.phone %>" />
+            </div>
+            <div class=" ">
+              <label for="phone" class="block mb-2 mt-4 text-sm md:text-base font-bold text-gray-500">Telefone</label>
+              <input
+                class="rounded p-3 md:p-4 w-full flex-1 text-base md:text-lg text-gray-700 border-gray-200 bg-gray-100 focus:bg-gray-200 outline-none"
+                type="number" name="phone" value="<%= data.phone %>" />
+            </div>
+            <div class=" ">
+              <label for="phone" class="block mb-2 mt-4 text-sm md:text-base font-bold text-gray-500">Telefone</label>
+              <input
+                class="rounded p-3 md:p-4 w-full flex-1 text-base md:text-lg text-gray-700 border-gray-200 bg-gray-100 focus:bg-gray-200 outline-none"
+                type="number" name="phone" value="<%= data.phone %>" />
+            </div>
+            <div class=" ">
+              <label for="phone" class="block mb-2 mt-4 text-sm md:text-base font-bold text-gray-500">Telefone</label>
+              <input
+                class="rounded p-3 md:p-4 w-full flex-1 text-base md:text-lg text-gray-700 border-gray-200 bg-gray-100 focus:bg-gray-200 outline-none"
+                type="number" name="phone" value="<%= data.phone %>" />
+            </div>
+            <div class=" ">
+              <label for="phone" class="block mb-2 mt-4 text-sm md:text-base font-bold text-gray-500">Telefone</label>
+              <input
+                class="rounded p-3 md:p-4 w-full flex-1 text-base md:text-lg text-gray-700 border-gray-200 bg-gray-100 focus:bg-gray-200 outline-none"
+                type="number" name="phone" value="<%= data.phone %>" />
+            </div>
+
+            <input class=" hidden rounded p-4 m-2 outline-none text-gray-700 border-gray-200 bg-white" type="text"
+              placeholder="Latitude" name="latitude" id="latitude" value="<%= data.latitude %>">
+            <input class=" hidden rounded p-4 m-2 outline-none text-gray-700 border-gray-200 bg-white" type="text"
+              placeholder="Longitude" name="longitude" id="longitude" value="<%= data.longitude %>">
+
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <%- include('../components/footer'); %>
+    </footer>
+
+
+    <script>
+
+      let lat = document.getElementById('latitude').value;
+      let lng = document.getElementById('longitude').value;
+      const mymap = L.map('mapid').setView([lat, lng], 12);
+      L.marker([lat, lng]).addTo(mymap)
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      }).addTo(mymap);
+
+    </script>
+    <script src="/scripts/modal.js"></script>
+    <script src="/scripts/script.js"></script>
+</body>
+
+</html>

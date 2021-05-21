@@ -10,6 +10,7 @@ const DashboardController = require('./app/controllers/DashboardController');
 
 routes.get('/', MapController.create);
 routes.get('/map', MapController.index);
+routes.get('/provider-detail/:detail_id', MapController.show);
 
 routes.get('/login', notAuthMiddleware, AuthController.index);
 routes.post('/login', notAuthMiddleware, AuthController.store);

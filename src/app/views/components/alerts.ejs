@@ -1,13 +1,15 @@
 <div>
   <% if (messages.error) { %>
-    <%= messages.error %>
-      <% } %>
+    <script language="javascript">
+      alert("<%= messages.error %>");
+    </script>
+    <% } %>
 </div>
 
 <div>
-  <% if (messages) { %>
-    <div>
-      <%= messages.message %>
-    </div>
+  <% if (messages.message) { %>
+    <script language="javascript">
+      alert("<%= messages.message %>");
+    </script>
     <% } %>
 </div>
