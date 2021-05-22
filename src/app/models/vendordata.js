@@ -35,7 +35,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     user_id: DataTypes.INTEGER,
   }, {
-    timestamps: false,
     sequelize,
     modelName: 'VendorData',
     tableName: 'vendor_data',

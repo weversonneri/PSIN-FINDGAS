@@ -18,7 +18,6 @@ module.exports = (sequelize, DataTypes) => {
   Scope.init({
     name: DataTypes.STRING,
   }, {
-    timestamps: false,
     sequelize,
     modelName: 'Scope',
     tableName: 'scopes',
