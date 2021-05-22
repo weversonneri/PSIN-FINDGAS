@@ -7,20 +7,20 @@ module.exports = {
       {
         id: 1,
         name: 'ADMIN',
-        created_at: new Date().toDateString(),
-        updated_at: new Date().toDateString(),
+        created_at: new Date(),
+        updated_at: new Date(),
       },
       {
         id: 2,
         name: 'VENDOR',
-        created_at: new Date().toDateString(),
-        updated_at: new Date().toDateString(),
+        created_at: new Date(),
+        updated_at: new Date(),
       },
       {
         id: 3,
         name: 'USER',
-        created_at: new Date().toDateString(),
-        updated_at: new Date().toDateString(),
+        created_at: new Date(),
+        updated_at: new Date(),
       },
     ]);
   },
