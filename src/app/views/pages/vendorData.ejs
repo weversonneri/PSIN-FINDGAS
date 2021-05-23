@@ -27,105 +27,95 @@
 
   <%- include('../components/navbar'); -%>
 
-    <main>
-      <div class=" absolute right-0 top-0">
-        <%- include('../components/alerts'); -%>
-      </div>
+    <%- include('../components/alerts'); -%>
 
-      <div>
+      <main>
 
-        <h2>Cadastrar endereço
-          <h2>
-            <h1>
+        <h1 class=" m-4 md:m-7 text-xl md:text-3xl text-center font-bold text-gray-700">
+          Dados do novo endereço
+        </h1>
 
+        <section class="bg-white p-4 sm:p-12 rounded-md m-auto mt-4 md:mt-10 w-full sm:w-11/12 md:max-w-2xl  ">
 
-
-            </h1>
-      </div>
-
-      <h1 class=" m-4 md:m-7 text-2xl md:text-3xl text-center font-bold text-gray-700">
-        Dados
-      </h1>
-
-      <section class=" xl:flex justify-between bg-white p-12 rounded-md m-auto mt-10 w-3/4 max-w-xl xl:max-w-full">
-        <div class=" xl:m-auto xl:flex-1">
-
-          <div>
-            <div class=" flex justify-center align-middle ">
-              <div class="p-5 w-full max-w-xl bg-gray-100 mb-6 mt-4 rounded xl:m-0 xl:w-full">
-                <div id="mapid" class="w-auto h-44 md:h-52 xl:h-80 rounded"></div>
-                <h3 class=" font-normal text-gray-600 text-xs md:text-sm text-center mt-3">Clique no mapa para adicionar
-                  a
-                  localização
-                </h3>
+          <div class=" m-auto flex-1">
+            <div>
+              <div class=" flex justify-center align-middle ">
+                <div class="p-2 sm:p-5 w-full max-w-xl bg-gray-100 sm:mb-6 md:mt-4 rounded xl:m-0 xl:w-full">
+                  <div id="mapid" class="z-0 w-auto h-44 sm:h-56 md:h-64 xl:h-80 rounded"></div>
+                  <h3 class=" font-normal text-gray-500 text-xs md:text-sm text-center mt-2 sm:mt-4">Clique no mapa para
+                    adicionar
+                    a
+                    localização
+                  </h3>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div class=" m-5"></div>
+          <div class=" m-5"></div>
 
-        <div class="">
-          <form class=" w-full max-w-xl mx-auto xl:m-auto" id="address-form" method="post"
-            action="/vendordata/register/<%= user.id %>">
+          <div class=" md:flex-1 m-auto">
+            <form class=" w-full max-w-xl mx-auto xl:m-auto" id="address-edit-form" method="post"
+              action="/vendordata/register/<%= user.id %>">
 
-            <div class=" ">
-              <label for="name" class="block mb-2 mt-4 text-sm md:text-base font-bold text-gray-500">Nome</label>
-              <input
-                class="rounded p-3 md:p-4 w-full flex-1 text-base md:text-lg text-gray-700 border-gray-200 bg-gray-100 focus:bg-gray-200 outline-none"
-                type="text" name="name" />
-            </div>
+              <div class=" ">
+                <label for="name" class="block mb-2 mt-4 text-sm sm:text-base font-bold text-gray-500">Nome</label>
+                <input
+                  class="rounded p-3 sm:p-4 w-full flex-1 text-base sm:text-lg text-gray-700 border-gray-200 bg-gray-100 focus:bg-gray-200 outline-none"
+                  type="text" name="name" />
+              </div>
 
-            <div class=" ">
-              <label for="phone" class="block mb-2 mt-4 text-sm md:text-base font-bold text-gray-500">Telefone</label>
-              <input
-                class="rounded p-3 md:p-4 w-full flex-1 text-base md:text-lg text-gray-700 border-gray-200 bg-gray-100 focus:bg-gray-200 outline-none"
-                type="number" name="phone" />
-            </div>
+              <div class=" ">
+                <label for="phone" class="block mb-2 mt-4 text-sm sm:text-base font-bold text-gray-500">Telefone</label>
+                <input
+                  class="rounded p-3 sm:p-4 w-full flex-1 text-base sm:text-lg text-gray-700 border-gray-200 bg-gray-100 focus:bg-gray-200 outline-none"
+                  type="number" name="phone" />
+              </div>
 
-            <input class=" hidden rounded p-4 m-2 outline-none text-gray-700 border-gray-200 bg-white" type="text"
-              placeholder="Latitude" name="latitude" id="latitude">
-            <input class=" hidden rounded p-4 m-2 outline-none text-gray-700 border-gray-200 bg-white" type="text"
-              placeholder="Longitude" name="longitude" id="longitude">
+              <input class=" hidden rounded p-4 m-2 outline-none text-gray-700 border-gray-200 bg-white" type="text"
+                placeholder="Latitude" name="latitude" id="latitude">
+              <input class=" hidden rounded p-4 m-2 outline-none text-gray-700 border-gray-200 bg-white" type="text"
+                placeholder="Longitude" name="longitude" id="longitude">
 
-            <div
-              class=" flex justify-center bg-indigo-500 w-full rounded hover:bg-indigo-800 mt-14 transition duration-500 transform hover:-translate-y-1 hover:scale-105">
-              <button class=" w-full p-3 text-base outline-none focus:outline-none border-transparent text-white"
-                type="submit">Cadastrar</button>
-            </div>
-          </form>
-        </div>
-      </section>
-    </main>
+              <div class=" flex justify-center sm:grid sm:grid-cols-6 mt-8 sm:mt-14">
+                <button type="submit" title="Salvar" form="address-edit-form"
+                  class=" p-2 sm:p-3 sm:col-start-4 sm:col-end-7 bg-green-600 hover:bg-green-700 focus:ring-green-500 focus:ring-offset-green-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-md ">
+                  Salvar
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+      </main>
 
-    <footer>
-      <%- include('../components/footer'); %>
-    </footer>
-
-
-    <script>
-      const mymap = L.map('mapid').setView([-15.7977541, -47.8997705], 12);
-
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      }).addTo(mymap);
-      let marker = null;
-
-      mymap.on('click', function (e) {
-        if (marker !== null) {
-          mymap.removeLayer(marker);
-        }
-        marker = L.marker(e.latlng).addTo(mymap);
-        let position = marker.getLatLng();
-
-        document.getElementById('latitude').value = position.lat;
-        document.getElementById('longitude').value = position.lng
+      <footer>
+        <%- include('../components/footer'); %>
+      </footer>
 
 
-        console.log("You clicked the map at lat: " + position.lat);
-        console.log("You clicked the map at lng: " + position.lng);
-      });
-    </script>
+      <script>
+        const mymap = L.map('mapid').setView([-15.7977541, -47.8997705], 12);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        }).addTo(mymap);
+        let marker = null;
+
+        mymap.on('click', function (e) {
+          if (marker !== null) {
+            mymap.removeLayer(marker);
+          }
+          marker = L.marker(e.latlng).addTo(mymap);
+          let position = marker.getLatLng();
+
+          document.getElementById('latitude').value = position.lat;
+          document.getElementById('longitude').value = position.lng
+
+
+          console.log("You clicked the map at lat: " + position.lat);
+          console.log("You clicked the map at lng: " + position.lng);
+        });
+      </script>
 </body>
 
 </html>
