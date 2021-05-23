@@ -75,7 +75,7 @@
 
                 <div class=" md:flex-1 max-w-md mt-3">
                   <form class=" w-full max-w-xl mx-auto xl:m-auto" id="profile-edit-form" method="post"
-                    action="/profile-edit/<%= user.id%>">
+                    action="/profile-edit">
 
                     <div class=" ">
                       <label for="name"
@@ -149,8 +149,7 @@
                   Alterar senha
                 </p>
 
-                <form id="form-alter-password" onsubmit="return validateForm()" method="post"
-                  action="/profile-edit/<%= user.id%>">
+                <form id="form-alter-password" onsubmit="return validateForm()" method="post" action="/profile-edit">
                   <div>
                     <div
                       class=" flex rounded-md  w-full flex-1 text-base md:text-lg text-gray-700 border-gray-200 bg-gray-100 focus:bg-gray-200 outline-none">
@@ -236,7 +235,7 @@
                 </p>
 
                 <form id="form-delete-password" onsubmit="return validateDelForm()" method="post"
-                  action="/profile-delete/<%= user.id%>">
+                  action="/profile-delete">
                   <div>
                     <div
                       class=" flex rounded-md  w-full flex-1 text-base md:text-lg text-gray-700 border-gray-200 bg-gray-100 focus:bg-gray-200 outline-none">
@@ -311,6 +310,11 @@
 
           if (account_password.value === "") {
             alert('Digite a senha');
+            return false;
+          }
+
+          if (account_password.value.length < 6) {
+            alert('Tamanho mínimo de senha de seis caracteres');
             return false;
           }
         }

@@ -28,12 +28,6 @@ module.exports = {
 
   async show(req, res) {
     try {
-      // const { user_id } = req.user;
-
-      // const user_data = await User.findOne({
-      //   where: { user_id },
-      //   attributes: ['id', 'name', 'email', 'scope_id', 'subscription'],
-      // });
       return res.render('pages/profile', { user: req.user });
     } catch (error) {
       req.flash('error', error.message);
@@ -68,8 +62,8 @@ module.exports = {
 
   async update(req, res) {
     try {
-      const { user_id } = req.params;
-      const user = await User.findByPk(user_id);
+      const { id } = req.user;
+      const user = await User.findByPk(id);
 
       if (!user) {
         req.flash('error', 'Error!');
@@ -91,18 +85,16 @@ module.exports = {
       if (new_password) {
         if (new_password && new_password.length < 6) {
           req.flash('error', 'Tamanho mínimo de senha de seis caracteres');
-          return res.status(201).redirect('/profile');
+          return res.status(401).redirect('/profile');
         }
 
         const compare_password = await bcrypt.compare(password, user.password_hash);
 
         if (new_password && !compare_password) {
           req.flash('error', 'A senha antiga está incorreta');
-          return res.status(201).redirect('/profile');
+          return res.status(401).redirect('/profile');
         }
       }
-
-      console.log(req.body);
 
       await user.update({ name, email, password: new_password });
 
@@ -116,15 +108,26 @@ module.exports = {
 
   async delete(req, res) {
     try {
-      // const user = await User.findByPk(req.params.user_id);
+      const { id } = req.user;
+      const user = await User.findByPk(id);
 
-      // if (!user) {
-      //   req.flash('error', 'Error!');
-      //   return res.status(400).redirect('/dashboard');
-      // }
+      if (!user) {
+        req.flash('error', 'Error!');
+        return res.status(400).redirect('/dashboard');
+      }
 
-      // await user.destroy();
-      console.log(req.user);
+      const { password } = req.body;
+
+      const compare_password = await bcrypt.compare(password, user.password_hash);
+
+      console.log(compare_password);
+      if (!compare_password) {
+        req.flash('error', 'A senha da conta está incorreta');
+        return res.status(401).redirect('/profile');
+      }
+
+      await user.destroy();
+
       req.flash('message', 'Conta deletada!');
       return res.status(200).redirect('/login');
     } catch (error) {

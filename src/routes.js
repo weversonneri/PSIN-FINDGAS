@@ -21,8 +21,8 @@ routes.get('/register', notAuthMiddleware, UserController.create);
 routes.post('/register', notAuthMiddleware, UserController.store);
 
 routes.get('/profile', authMiddleware, UserController.show);
-routes.post('/profile-edit/:user_id', authMiddleware, UserController.update);
-routes.post('/profile-delete/:user_id', authMiddleware, UserController.delete);
+routes.post('/profile-edit', authMiddleware, UserController.update);
+routes.post('/profile-delete', authMiddleware, UserController.delete);
 
 routes.get('/dashboard', authMiddleware, DashboardController.index);
 routes.get('/admin-dashboard', authMiddleware, DashboardController.createAdmin);
