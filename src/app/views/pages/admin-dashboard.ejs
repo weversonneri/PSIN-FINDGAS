@@ -1,2 +1,45 @@
-<%- include('../components/navbar'); -%>
-  <h1>admin</h1>
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="#">
+  <title>Admin dashboard</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin="" />
+
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/build/tailwind.css" />
+  <link rel="stylesheet" href="/styles/styles.css" />
+  <link rel="stylesheet" href="/styles/tailwind.css" />
+
+</head>
+
+<body class="bg-gray-100 font-title">
+
+  <%- include('../components/navbar'); -%>
+
+    <div class=" absolute right-0 top-0">
+      <%- include('../components/alerts'); -%>
+    </div>
+    <h2>DASHBOARD ADEMIR<h2>
+
+
+        <footer>
+          <%- include('../components/footer'); %>
+        </footer>
+
+        <script src="/scripts/index.js"></script>
+        <script src="/scripts/modal.js"></script>
+</body>
+
+</html>

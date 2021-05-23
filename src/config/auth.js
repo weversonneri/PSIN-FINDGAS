@@ -37,7 +37,6 @@ module.exports = function (passport) {
         if (!isValidPassword) {
           return done(null, false, { message: 'Email ou senha incorreta!' });
         }
-
         return done(null, user);
       } catch (error) {
         done(error, false);

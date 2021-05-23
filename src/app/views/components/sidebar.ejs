@@ -2,7 +2,7 @@
   <nav class="flex justify-between items-center p-3 bg-gray-500 ">
     <% if(user.subscription==='P' ){ %>
       <figure class=" flex items-stretch">
-        <a href="/" class="w-8 h-8 ml-8 self-end"><img src="/images/gaspremium.svg" alt="findgas"></a>
+        <a href="/" class="w-8 h-8 ml-8 self-end"><img src="/images/gas.svg" alt="findgas"></a>
         <figcaption class="self-end text-sm font-sans text-white">Premium</figcaption>
       </figure>
       <% } else { %>
@@ -29,7 +29,7 @@
                 </p>
               </button>
               <div id="profilemenu" class=" hidden absolute right-0 w-36 mt-2 py-2 bg-white rounded-lg shadow-lg ">
-                <a href="/profile"
+                <a href="/profile/<%= user.id %>"
                   class="block px-4 py-2 tracking-wide text-sm text-gray-600 hover:text-white hover:bg-gray-500">Perfil</a>
                 <a href="/logout"
                   class="block px-4 py-2 tracking-wide text-sm text-gray-600 hover:text-white hover:bg-gray-500">Sair</a>

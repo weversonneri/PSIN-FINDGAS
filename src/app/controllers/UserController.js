@@ -1,3 +1,4 @@
+const bcrypt = require('bcryptjs');
 const { User } = require('../models');
 
 module.exports = {
@@ -27,16 +28,16 @@ module.exports = {
 
   async show(req, res) {
     try {
-      const { id } = req.params;
+      // const { user_id } = req.user;
 
-      const user = await User.findOne({
-        where: { id },
-        attributes: ['id', 'name', 'email', 'scope_id', 'subscription'],
-      });
-
-      return res.json(user);
+      // const user_data = await User.findOne({
+      //   where: { user_id },
+      //   attributes: ['id', 'name', 'email', 'scope_id', 'subscription'],
+      // });
+      return res.render('pages/profile', { user: req.user });
     } catch (error) {
-      return res.json(null);
+      req.flash('error', error.message);
+      return res.status(403).redirect('/dashboard');
     }
   },
 
@@ -67,35 +68,68 @@ module.exports = {
 
   async update(req, res) {
     try {
-      const user = await User.findByPk(req.userId);
+      const { user_id } = req.params;
+      const user = await User.findByPk(user_id);
 
       if (!user) {
-        return res.status(400).json({ errors: 'User not found!' });
+        req.flash('error', 'Error!');
+        return res.status(400).redirect('/dashboard');
       }
 
-      await user.update(req.body);
+      if (user.scope_id !== req.user.scope_id) {
+        req.flash('error', 'Nao é premitido alterar seu scope');
+        return res.status(401).redirect('/dashboard');
+      }
 
-      const { name, email } = user;
+      const {
+        name,
+        email,
+        password,
+        new_password,
+      } = req.body;
 
-      return res.status(200).json({ name, email });
+      if (new_password) {
+        if (new_password && new_password.length < 6) {
+          req.flash('error', 'Tamanho mínimo de senha de seis caracteres');
+          return res.status(201).redirect('/profile');
+        }
+
+        const compare_password = await bcrypt.compare(password, user.password_hash);
+
+        if (new_password && !compare_password) {
+          req.flash('error', 'A senha antiga está incorreta');
+          return res.status(201).redirect('/profile');
+        }
+      }
+
+      console.log(req.body);
+
+      await user.update({ name, email, password: new_password });
+
+      req.flash('message', 'Cadastro atualizado!');
+      return res.status(201).redirect('/profile');
     } catch (error) {
-      return res.status(400).json(error);
+      req.flash('error', error.message);
+      return res.status(403).redirect('/profile');
     }
   },
 
   async delete(req, res) {
     try {
-      const user = await User.findByPk(req.userId);
+      // const user = await User.findByPk(req.params.user_id);
 
-      if (!user) {
-        return res.status(400).json({ errors: 'User not found!' });
-      }
+      // if (!user) {
+      //   req.flash('error', 'Error!');
+      //   return res.status(400).redirect('/dashboard');
+      // }
 
-      await user.destroy();
-
-      return res.json(null);
+      // await user.destroy();
+      console.log(req.user);
+      req.flash('message', 'Conta deletada!');
+      return res.status(200).redirect('/login');
     } catch (error) {
-      return res.status(400).json(error);
+      req.flash('error', error.message);
+      return res.status(403).redirect('/profile');
     }
   },
 

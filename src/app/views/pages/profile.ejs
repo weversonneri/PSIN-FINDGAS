@@ -1,1 +1,322 @@
-<h1>PROFILE</h1>
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="#">
+  <title>Perfil</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin="" />
+
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/build/tailwind.css" />
+  <link rel="stylesheet" href="/styles/styles.css" />
+  <link rel="stylesheet" href="/styles/tailwind.css" />
+
+  <style>
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    input[type="number"] {
+      -moz-appearance: textfield;
+    }
+  </style>
+
+
+</head>
+
+<body class="bg-gray-100 font-title">
+
+  <%- include('../components/arrow-header', { title: 'Perfil' }); -%>
+
+    <%- include('../components/alerts'); -%>
+
+      <main>
+
+        <h1 class=" m-4 md:m-7 text-2xl md:text-3xl text-center font-bold text-gray-700">
+          Dados do Perfil
+        </h1>
+
+        <section class=" flex flex-col justify-between bg-white p-12 rounded-md m-auto mt-10 w-3/4 max-w-md ">
+
+          <% if(user.subscription==='P' ){ %>
+            <div class="flex relative h-24 w-24 justify-center items-center m-auto">
+              <div
+                class="flex relative shadow-lg m-auto w-full h-full rounded-full uppercase font-normal font-sans bg-gray-300 overflow-hidden border-2 border-gray-600 focus:outline-none focus:border-white">
+                <p class=" m-auto text-5xl">
+                  <%= user.name[0]%>
+                </p>
+              </div>
+              <figure
+                class="rounded-full w-6 h-6 shadow-md absolute flex top-0 right-1 p-0.5 border border-gray-50 bg-white">
+                <img src="/images/crown.svg" alt="Conta Pro">
+              </figure>
+            </div>
+            <% } else { %>
+              <div
+                class="flex h-24 w-24 relative shadow-lg m-auto rounded-full uppercase font-normal font-sans bg-gray-300 overflow-hidden border-2 border-gray-600 focus:outline-none focus:border-white">
+                <p class=" m-auto text-5xl">
+                  <%= user.name[0]%>
+                </p>
+              </div>
+              <% } %>
+
+                <div class=" md:flex-1 max-w-md mt-3">
+                  <form class=" w-full max-w-xl mx-auto xl:m-auto" id="profile-edit-form" method="post"
+                    action="/profile-edit/<%= user.id%>">
+
+                    <div class=" ">
+                      <label for="name"
+                        class="block mb-2 mt-4 text-sm md:text-base font-bold text-gray-500">Nome</label>
+                      <input
+                        class="rounded p-3 md:p-4 w-full flex-1 text-base md:text-lg text-gray-700 border-gray-200 bg-gray-100 focus:bg-gray-200 outline-none"
+                        type="text" name="name" value="<%= user.name%>" />
+                    </div>
+
+                    <label for="email"
+                      class="block mb-2 mt-4 text-sm md:text-base font-bold text-gray-500">Email</label>
+                    <input
+                      class="rounded p-3 md:p-4 w-full flex-1 text-base md:text-lg text-gray-700 border-gray-200 bg-gray-100 focus:bg-gray-200 outline-none"
+                      type="email" name="email" value="<%= user.email%>" />
+
+                    <div class=" ">
+                      <label for="phone"
+                        class="block mb-2 mt-4 text-sm md:text-base font-bold text-gray-500">Telefone</label>
+                      <input
+                        class="rounded p-3 md:p-4 w-full flex-1 text-base md:text-lg text-gray-700 border-gray-200 bg-gray-100 focus:bg-gray-200 outline-none"
+                        type="number" name="phone" value="" />
+                    </div>
+
+                    <label for="password"
+                      class="block mb-2 mt-4 text-sm md:text-base font-bold text-gray-500">Senha</label>
+                    <div
+                      class=" flex justify-between mt-5 rounded p-3 md:p-4  w-full text-base md:text-lg text-gray-500 border-gray-200 bg-gray-100 focus:bg-gray-200 outline-none">
+                      <span class="" name="password">********************** </span>
+                      <button type="button" onclick="openModal('open')" class=" focus:outline-none ">Alterar</button>
+                    </div>
+
+
+                    <button type="submit" title="Salvar" form="profile-edit-form"
+                      class=" p-3 md:p-4 mt-10 bg-green-600 hover:bg-green-700 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none rounded-md ">
+                      Salvar
+                    </button>
+
+                </div>
+                </form>
+        </section>
+
+        <section class=" bg-white p-10 rounded-md m-auto mt-10 w-3/4 max-w-md ">
+          <h2 class=" text-gray-600 text-base font-semibold">
+            Deletar conta
+          </h2>
+          <a title="Excluir" href="#" class="  text-red-500 hover:text-red-700 text-xs font-semibold focus:outline-none"
+            onclick="openModal('deleteacc')">
+            <p class=" m-auto mt-3"> Deletar conta </p>
+          </a>
+        </section>
+
+      </main>
+
+      <!-- Modal alter password -->
+
+      <dialog id="open" class="bg-transparent z-0 relative w-screen h-screen">
+        <div
+          class="p-7 flex justify-center items-center fixed left-0 top-0 w-full h-full bg-gray-900 bg-opacity-50 z-50 transition-opacity duration-300 opacity-0">
+
+          <div class="shadow-lg rounded-md p-6 bg-white dark:bg-gray-800 w-96 m-auto">
+            <div class="w-full h-full text-center">
+              <div class="flex h-full flex-col justify-between ">
+                <a href="#" class=" relative " onclick="modalClose('open')">
+                  <svg xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 absolute top-0 right-0 stroke-current text-gray-400 hover:text-gray-700 " fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </a>
+                <p class="text-gray-800 dark:text-gray-200 text-lg md:text-xl font-bold mb-4 mt-2">
+                  Alterar senha
+                </p>
+
+                <form id="form-alter-password" onsubmit="return validateForm()" method="post"
+                  action="/profile-edit/<%= user.id%>">
+                  <div>
+                    <div
+                      class=" flex rounded-md  w-full flex-1 text-base md:text-lg text-gray-700 border-gray-200 bg-gray-100 focus:bg-gray-200 outline-none">
+                      <figure class=" p-4 m-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                          stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        </svg>
+                      </figure>
+                      <input id="current_password"
+                        class="rounded-r-md p-3 md:p-4 w-full text-base md:text-lg text-gray-700 border-gray-200 bg-gray-100 focus:bg-gray-200 outline-none"
+                        type="password" name="password" placeholder="Senha atual" />
+                    </div>
+
+                    <div
+                      class=" flex rounded-md mt-3 w-full flex-1 text-base md:text-lg text-gray-700 border-gray-200 bg-gray-100 focus:bg-gray-200 outline-none">
+                      <figure class=" p-4 m-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                          stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        </svg>
+                      </figure>
+                      <input id="new_password"
+                        class="rounded-r-md p-3 md:p-4 w-full flex-1 text-base md:text-lg text-gray-700 border-gray-200 bg-gray-100 focus:bg-gray-200 outline-none"
+                        type="password" name="new_password" placeholder="Nova senha" />
+                    </div>
+
+                    <div
+                      class=" flex rounded-md mt-3 w-full flex-1 text-base md:text-lg text-gray-700 border-gray-200 bg-gray-100 focus:bg-gray-200 outline-none">
+                      <figure class=" p-4 m-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                          stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        </svg>
+                      </figure>
+                      <input id="confirm_new_password"
+                        class="rounded-r-md p-3 md:p-4 w-full flex-1 text-base md:text-lg text-gray-700 border-gray-200 bg-gray-100 focus:bg-gray-200 outline-none"
+                        type="password" name="confirm_new_password" placeholder="Confirme nova senha" />
+                    </div>
+
+                  </div>
+
+                  <button type="submit" id="button-alter-password" title="Salvar alteração" form="form-alter-password"
+                    class="card p-3 md:p-4 mt-6 sm:mt-8 bg-green-600 hover:bg-green-700 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none rounded-md ">
+                    Confirmar
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </dialog>
+
+      <!-- Modal delete account-->
+
+      <dialog id="deleteacc" class="bg-transparent z-0 relative w-screen h-screen">
+        <div
+          class="p-7 flex justify-center items-center fixed left-0 top-0 w-full h-full bg-gray-900 bg-opacity-50 z-50 transition-opacity duration-300 opacity-0">
+
+          <div class="shadow-lg rounded-md p-6 bg-white dark:bg-gray-800 w-96 m-auto">
+            <div class="w-full h-full text-center">
+              <div class="flex h-full flex-col justify-between ">
+                <a href="#" class=" relative " onclick="modalClose('deleteacc')">
+                  <svg xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 absolute top-0 right-0 stroke-current text-gray-400 hover:text-gray-700 " fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </a>
+                <h1 class="text-red-600 dark:text-gray-200 text-lg md:text-xl font-bold mb-4 mt-2">
+                  Deletar conta
+                </h1>
+                <p class=" text-red-400 text-xs pb-4">
+                  Tem certeza que deseja deletar sua conta? Essa ação é IRREVERSÍVEL
+                </p>
+
+                <p class=" text-gray-500 text-xs pb-4">
+                  Digite sua senha para confirmar a exclusão
+                </p>
+
+                <form id="form-delete-password" onsubmit="return validateDelForm()" method="post"
+                  action="/profile-delete/<%= user.id%>">
+                  <div>
+                    <div
+                      class=" flex rounded-md  w-full flex-1 text-base md:text-lg text-gray-700 border-gray-200 bg-gray-100 focus:bg-gray-200 outline-none">
+                      <figure class=" p-4 m-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                          stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        </svg>
+                      </figure>
+                      <input id="account_password"
+                        class="rounded-r-md p-3 md:p-4 w-full text-base md:text-lg text-gray-700 border-gray-200 bg-gray-100 focus:bg-gray-200 outline-none"
+                        type="password" name="password" placeholder="Senha da conta" />
+                    </div>
+
+
+                  </div>
+
+                  <button type="submit" id="button-alter-password" title="Salvar alteração" form="form-delete-password"
+                    class="card p-3 md:p-4 mt-6 sm:mt-8 bg-red-600 hover:bg-red-700 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none rounded-md ">
+                    Confirmar
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </dialog>
+
+      <footer>
+        <%- include('../components/footer'); %>
+      </footer>
+
+      <script src="/scripts/modal.js"></script>
+      <script>
+        function validateForm() {
+          let current_password = document.getElementById('current_password');
+          let new_password = document.getElementById('new_password');
+          let confirm_new_password = document.getElementById('confirm_new_password');
+
+          if (current_password.value === "") {
+            alert('Preencha todos os campos');
+            return false;
+          }
+          if (new_password.value === "") {
+            alert('Preencha todos os campos');
+            return false;
+          }
+          if (confirm_new_password.value === "") {
+            alert('Preencha todos os campos');
+            return false;
+          }
+
+          if (new_password.value.length < 6) {
+            alert('Tamanho mínimo de senha de seis caracteres');
+            return false;
+          }
+
+          if (new_password.value !== confirm_new_password.value) {
+            alert('As senhas não coincidem');
+            return false;
+          }
+
+        }
+
+      </script>
+
+      <script>
+        function validateDelForm() {
+          let account_password = document.getElementById('account_password');
+
+          if (account_password.value === "") {
+            alert('Digite a senha');
+            return false;
+          }
+        }
+      </script>
+
+
+</body>
+
+</html>

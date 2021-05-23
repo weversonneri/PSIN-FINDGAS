@@ -10,11 +10,11 @@ module.exports = {
 
   async show(req, res) {
     try {
-      const { id } = req.params;
+      const { vendordata_id } = req.params;
       const user = req.user.id;
 
       const datas = await VendorData.findOne({
-        where: { user_id: user, id },
+        where: { user_id: user, id: vendordata_id },
         attributes: ['id', 'name', 'phone', 'latitude', 'longitude'],
       });
       return res.render('pages/vendorData-edit', { user: req.user, datas });
@@ -70,12 +70,13 @@ module.exports = {
 
   async update(req, res) {
     try {
-      const { id } = req.params;
+      const { vendordata_id } = req.params;
 
-      const vendorData = await VendorData.findByPk(id);
+      const vendorData = await VendorData.findByPk(vendordata_id);
 
       if (!vendorData) {
-        return res.status(400).json({ error: 'Data not found!' });
+        req.flash('error', 'Error!');
+        return res.status(400).redirect('/dashboard');
       }
 
       const data = req.body;
@@ -93,9 +94,9 @@ module.exports = {
 
   async delete(req, res) {
     try {
-      const { id } = req.params;
+      const { vendordata_id } = req.params;
 
-      const vendorData = await VendorData.findByPk(id);
+      const vendorData = await VendorData.findByPk(vendordata_id);
 
       if (!vendorData) {
         return res.status(400).json({ error: 'Data not found!' });

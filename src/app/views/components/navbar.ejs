@@ -4,8 +4,8 @@
     <nav class="flex justify-between items-center p-3 bg-gray-500 ">
       <% if(user.subscription==='P' ){ %>
         <figure class=" flex items-stretch">
-          <a href="/" class="w-7 h-7 sm:w-8 sm:h-8 ml-8 self-end"><img src="/images/gaspremium.svg" alt="findgas"></a>
-          <figcaption class="self-end text-xs sm:text-sm font-sans text-white">Premium</figcaption>
+          <a href="/" class="w-7 h-7 sm:w-8 sm:h-8 ml-8 self-end"><img src="/images/gas.svg" alt="findgas"></a>
+          <figcaption class="self-end text-xs sm:text-sm font-sans text-white">Pro</figcaption>
         </figure>
         <% } else { %>
           <a href="/" class="flex-shrink-0 w-8 h-8 ml-8"><img src="/images/gas.svg" alt="findgas"></a>
@@ -24,39 +24,79 @@
               <a href="/" class="block py-2 tracking-wide text-gray-600 hover:text-indigo-600 ">Home</a>
               <a href="/dashboard" class="block py-2 tracking-wide text-gray-600 hover:text-indigo-600">Dashboard</a>
               <div class=" relative self-center">
-                <button id="toggleprofile"
-                  class="hidden sm:block h-7 w-7 rounded-full uppercase font-normal font-sans bg-gray-300 overflow-hidden border-2 border-gray-600 focus:outline-none focus:border-white">
-                  <p class=" m-auto">
-                    <%= user.name[0]%>
-                  </p>
-                </button>
-                <div id="profilemenu" class=" hidden absolute right-0 w-36 mt-2 py-2 bg-white rounded-lg shadow-lg ">
-                  <a href="/profile"
-                    class="block px-4 py-2 tracking-wide text-sm text-gray-600 hover:text-white hover:bg-gray-500">Perfil</a>
-                  <a href="/logout"
-                    class="block px-4 py-2 tracking-wide text-sm text-gray-600 hover:text-white hover:bg-gray-500">Sair</a>
-                </div>
+
+                <% if(user.subscription==='P' ){ %>
+                  <div class="hidden sm:block h-7 w-7 justify-center items-center m-auto">
+                    <button id="toggleprofile"
+                      class="hidden sm:block w-full h-full rounded-full uppercase font-normal font-sans bg-gray-300 overflow-hidden border-2 border-gray-600 focus:outline-none focus:border-white">
+                      <p class=" m-auto">
+                        <%= user.name[0]%>
+                      </p>
+                    </button>
+                    <figure class="rounded-full w-4 h-4 absolute flex -top-1 -right-1 p-0.5  ">
+                      <img src="/images/crown.svg" alt="Conta Pro">
+                    </figure>
+                  </div>
+                  <% } else { %>
+                    <div class="hidden sm:block h-7 w-7 justify-center items-center m-auto">
+                      <button id="toggleprofile"
+                        class="hidden sm:block w-full h-full rounded-full uppercase font-normal font-sans bg-gray-300 overflow-hidden border-2 border-gray-600 focus:outline-none focus:border-white">
+                        <p class=" m-auto">
+                          <%= user.name[0]%>
+                        </p>
+                      </button>
+                    </div>
+                    <% } %>
+
+                      <div id="profilemenu"
+                        class=" hidden absolute right-0 w-36 mt-2 py-2 bg-white rounded-lg shadow-lg ">
+                        <a href="/profile"
+                          class="block px-4 py-2 tracking-wide text-sm text-gray-600 hover:text-white hover:bg-gray-500">Perfil</a>
+                        <a href="/logout"
+                          class="block px-4 py-2 tracking-wide text-sm text-gray-600 hover:text-white hover:bg-gray-500">Sair</a>
+                      </div>
               </div>
 
               <!-- SM avatar menu-->
-              <div class=" block sm:hidden py-5 border-t mt-2 border-gray-400">
-                <div class=" flex items-center">
-                  <div
-                    class="flex  h-7 w-7 rounded-full uppercase font-normal font-sans bg-gray-300 overflow-hidden border-2 border-gray-600 focus:outline-none focus:border-white">
-                    <p class=" m-auto">
-                      <%= user.name[0]%>
-                    </p>
+              <div class=" block sm:hidden pt-5 border-t mt-2 border-gray-400">
+                <% if(user.subscription==='P' ){ %>
+                  <div class=" flex items-center">
+                    <div class=" relative self-centerr">
+                      <div class="block sm:hidden h-7 w-7 justify-center items-center ml-0">
+                        <div
+                          class="flex sm:hidden w-full h-full rounded-full uppercase font-normal font-sans bg-gray-300 overflow-hidden border-2 border-gray-600 focus:outline-none focus:border-white">
+                          <p class=" m-auto">
+                            <%= user.name[0]%>
+                          </p>
+                        </div>
+                        <figure class="rounded-full w-4 h-4 absolute flex -top-1 -right-1 p-0.5 ">
+                          <img src="/images/crown.svg" alt="Conta Pro">
+                        </figure>
+                      </div>
+                    </div>
+                    <span class="ml-3 font-medium">
+                      <%= user.name%>
+                    </span>
                   </div>
-                  <span class="ml-3 font-medium">
-                    <%= user.name%>
-                  </span>
-                </div>
-                <div class=" mt-3">
-                  <a href="/profile"
-                    class="block mt-2 tracking-wide text-sm text-gray-600 hover:text-indigo-600">Perfil</a>
-                  <a href="/logout"
-                    class="block mt-2 tracking-wide text-sm text-gray-600 hover:text-indigo-600">Sair</a>
-                </div>
+                  <% } else { %>
+                    <div class=" flex items-center">
+                      <div
+                        class="flex h-7 w-7 rounded-full uppercase font-normal font-sans bg-gray-300 overflow-hidden border-2 border-gray-600 focus:outline-none focus:border-white">
+                        <p class=" m-auto">
+                          <%= user.name[0]%>
+                        </p>
+                      </div>
+                      <span class="ml-3 font-medium">
+                        <%= user.name%>
+                      </span>
+                    </div>
+                    <% } %>
+                      <div class=" mt-3">
+                        <a href="/profile"
+                          class="block mt-2 tracking-wide text-sm text-gray-600 hover:text-indigo-600">Perfil</a>
+                        <a href="/logout"
+                          class="block mt-2 tracking-wide text-sm text-gray-600 hover:text-indigo-600">Sair</a>
+                      </div>
               </div>
             </div>
     </nav>
@@ -96,3 +136,5 @@
       <% } %>
 
 </header>
+
+<script src="/scripts/script.js"></script>

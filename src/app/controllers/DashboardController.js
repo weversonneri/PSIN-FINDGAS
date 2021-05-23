@@ -3,10 +3,16 @@ const { User } = require('../models');
 
 module.exports = {
   async create(req, res) {
+    if (req.user.scope_id === 1) {
+      return res.redirect('/admin-dashboard');
+    }
     return res.render('pages/dashboard', { user: req.user });
   },
 
   async createAdmin(req, res) {
+    if (req.user.scope_id !== 1) {
+      return res.redirect('/dashboard');
+    }
     return res.render('pages/admin-dashboard', { user: req.user });
   },
 
@@ -18,6 +24,9 @@ module.exports = {
         attributes: ['id', 'name', 'phone', 'latitude', 'longitude'],
       });
       // console.log(datas);
+      if (req.user.scope_id === 1) {
+        return res.redirect('/admin-dashboard');
+      }
       return res.render('pages/dashboard', { user: req.user, addresses: datas });
       // return res.render('pages/index', { locals: local });
       // return res.status(200).json(datas);
