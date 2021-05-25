@@ -25,7 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(flash());
 app.use(session({
   // eslint-disable-next-line global-require
-  // store: new (require('connect-pg-simple')(session))(),
+  store: new (require('connect-pg-simple')(session))(),
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
