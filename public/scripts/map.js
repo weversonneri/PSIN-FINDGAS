@@ -23,10 +23,6 @@ const mapIconPro = L.icon({
   shadowAnchor: [22, 94],
 });
 
-// const mapTooltip = L.tooltip({
-
-// });
-
 const popupOptions = {
   maxWidth: '500',
   className: 'custom',
@@ -38,8 +34,6 @@ const popupOptionsPro = {
   className: 'custom-pro',
   closeButton: false,
 };
-
-const teste = document.getElementById('test');
 
 const getData = async () => {
   try {
@@ -69,16 +63,19 @@ const getData = async () => {
             </a>
           </div>
           <a href="/provider-detail/${item.id}"
-            class=" ml-4 my-4 p-1 flex items-center bg-blue-500 hover:bg-blue-600 rounded-md " title="Detalhes">
+            class=" ml-6 my-4 p-1 flex items-center bg-blue-500 hover:bg-blue-600 rounded-md " title="Detalhes">
             <svg class="h-5 w-5 stroke-current text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
               viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
             </svg>
           </a>
         </div>`);
-        marker.bindTooltip('Anúncio').openTooltip();
+        marker.bindTooltip('Anúncio',
+          {
+            direction: 'right', permanent: false, offset: [20, -15], opacity: 0.8,
+          }).openTooltip();
 
-        marker.bindPopup(popup, popupOptionsPro).openPopup();
+        marker.bindPopup(popup, popupOptionsPro);
       }
 
       if (item.User.subscription === 'N') {

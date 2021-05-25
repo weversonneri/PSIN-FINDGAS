@@ -31,7 +31,7 @@
     <%- include('../components/alerts'); -%>
 
       <main class=" flex-grow">
-        <div class=" flex flex-col m-4 sm:m-7">
+        <div class=" flex flex-col mx-auto m-7 w-11/12 sm:w-4/5 max-w-4xl">
           <h1 class=" text-lg sm:text-2xl text-left font-bold text-gray-700">
             DASHBOARD
           </h1>
@@ -64,7 +64,7 @@
               <% if(addresses.length===0 ) {%>
                 <h1 class=" m-auto ">Você ainda não possui uma unidade cadastrada
                 </h1>
-                <hr class=" w-3/5 m-auto" />
+                <hr class=" w-full m-auto mt-5" />
                 <% } %>
             </div>
             <% addresses.forEach((address, i=0)=> { %>
@@ -105,8 +105,8 @@
                     </div>
                   </div>
                 </div>
-                <% }) %>
               </div>
+              <% }) %>
           </div>
         </div>
       </main>

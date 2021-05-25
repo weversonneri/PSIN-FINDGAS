@@ -32,6 +32,9 @@ module.exports = {
       }
 
       if (req.user.subscription === 'N') {
+        if (datas.length < 1) {
+          return res.render('pages/dashboard', { user: req.user, addresses: datas });
+        }
         return res.render('pages/dashboard', { user: req.user, addresses: [datas[0]] });
       }
       // const result = datas.filter((item) => item.User.subscription === 'N');
@@ -42,13 +45,7 @@ module.exports = {
       // return res.status(200).json(datas);
       // console.log('subscription', req.user.subscription);
       // console.log(datas);
-      const arr = [1, 2, 3];
 
-      arr.forEach((i, idx, array) => {
-        if (idx === array.length + 0) {
-          console.log(`Last callback call at index ${idx} with value ${i}`);
-        }
-      });
       return res.render('pages/dashboard', { user: req.user, addresses: datas });
     } catch (error) {
       console.log(error);
