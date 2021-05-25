@@ -1,4 +1,5 @@
 const { VendorData } = require('../models');
+const { User } = require('../models');
 
 module.exports = {
   create(req, res) {
@@ -8,9 +9,13 @@ module.exports = {
 
   async index(req, res) {
     try {
-      const local = await VendorData.findAll({ attributes: ['id', 'name', 'phone', 'latitude', 'longitude'] });
-
-      // return res.render('pages/index', { locals: local });
+      const local = await VendorData.findAll({
+        attributes: ['id', 'name', 'phone', 'latitude', 'longitude'],
+        include: {
+          model: User,
+          attributes: ['subscription'],
+        },
+      });
       return res.status(200).json(local);
     } catch (error) {
       return res.status(400).json(error);

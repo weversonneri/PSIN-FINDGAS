@@ -36,13 +36,13 @@
 
 </head>
 
-<body class="bg-gray-100 font-title">
+<body class="bg-gray-100 font-title flex flex-col h-screen">
 
   <%- include('../components/navbar'); -%>
 
     <%- include('../components/alerts'); -%>
 
-      <main>
+      <main class=" flex-grow">
 
         <h1 class=" m-4 md:m-7 text-xl md:text-3xl text-center font-bold text-gray-700">
           Atualizar endereço
@@ -106,76 +106,74 @@
         </section>
       </main>
 
-      <footer>
-        <%- include('../components/footer'); %>
-      </footer>
+      <%- include('../components/footer'); %>
 
-      <!-- modal -->
+        <!-- modal -->
 
-      <dialog id="open" class="bg-transparent z-0 relative w-screen h-screen">
-        <div
-          class="p-7 flex justify-center items-center fixed left-0 top-0 w-full h-full bg-gray-900 bg-opacity-50 z-50 transition-opacity duration-300 opacity-0">
+        <dialog id="open" class="bg-transparent z-0 relative w-screen h-screen">
+          <div
+            class="p-7 flex justify-center items-center fixed left-0 top-0 w-full h-full bg-gray-900 bg-opacity-50 z-50 transition-opacity duration-300 opacity-0">
 
-          <div class="shadow-lg rounded-md p-4 bg-white dark:bg-gray-800 w-64 m-auto">
-            <div class="w-full h-full text-center">
-              <div class="flex h-full flex-col justify-between">
-                <img width="40" height="40" class="mt-4 w-12 h-12 m-auto text-black" src="/images/delete.svg"
-                  alt="Lixeira">
-                </img>
-                <p class="text-gray-800 dark:text-gray-200 text-xl font-bold mt-4">
-                  Excluir endereço
-                </p>
-                <p class="text-gray-600 dark:text-gray-400 text-xs py-2 px-6">
-                  Quer mesmo excluir esse endereço?
-                </p>
-                <div class="flex items-center justify-between gap-4 w-full mt-8">
-                  <button type="submit" form="delete-address"
-                    class="py-2 px-4  bg-red-600 hover:bg-red-700 focus:ring-red-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none  rounded-md ">
-                    Excluir
-                  </button>
-                  <button type="button" onclick="modalClose('open')"
-                    class="py-2 px-4  bg-gray-100 hover:bg-gray-200 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-black w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none  rounded-md">
-                    Cancelar
-                  </button>
+            <div class="shadow-lg rounded-md p-4 bg-white dark:bg-gray-800 w-64 m-auto">
+              <div class="w-full h-full text-center">
+                <div class="flex h-full flex-col justify-between">
+                  <img width="40" height="40" class="mt-4 w-12 h-12 m-auto text-black" src="/images/delete.svg"
+                    alt="Lixeira">
+                  </img>
+                  <p class="text-gray-800 dark:text-gray-200 text-xl font-bold mt-4">
+                    Excluir endereço
+                  </p>
+                  <p class="text-gray-600 dark:text-gray-400 text-xs py-2 px-6">
+                    Quer mesmo excluir esse endereço?
+                  </p>
+                  <div class="flex items-center justify-between gap-4 w-full mt-8">
+                    <button type="submit" form="delete-address"
+                      class="py-2 px-4  bg-red-600 hover:bg-red-700 focus:ring-red-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none  rounded-md ">
+                      Excluir
+                    </button>
+                    <button type="button" onclick="modalClose('open')"
+                      class="py-2 px-4  bg-gray-100 hover:bg-gray-200 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-black w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none  rounded-md">
+                      Cancelar
+                    </button>
+                  </div>
+                  <form method="post" action="/vendordata/delete/<%= datas.id %> " id="delete-address"></form>
                 </div>
-                <form method="post" action="/vendordata/delete/<%= datas.id %> " id="delete-address"></form>
               </div>
             </div>
+
           </div>
-
-        </div>
-      </dialog>
+        </dialog>
 
 
-      <script>
+        <script>
 
-        let lat = document.getElementById('latitude').value;
-        let lng = document.getElementById('longitude').value;
-        console.log(lat, lng)
-        const mymap = L.map('mapid').setView([lat, lng], 12);
-        L.marker([lat, lng]).addTo(mymap)
+          let lat = document.getElementById('latitude').value;
+          let lng = document.getElementById('longitude').value;
+          console.log(lat, lng)
+          const mymap = L.map('mapid').setView([lat, lng], 12);
+          L.marker([lat, lng]).addTo(mymap)
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        }).addTo(mymap);
-        let marker = null;
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+          }).addTo(mymap);
+          let marker = null;
 
-        mymap.on('click', function (e) {
-          if (marker !== null) {
-            mymap.removeLayer(marker);
-          }
-          marker = L.marker(e.latlng).addTo(mymap);
-          let position = marker.getLatLng();
+          mymap.on('click', function (e) {
+            if (marker !== null) {
+              mymap.removeLayer(marker);
+            }
+            marker = L.marker(e.latlng).addTo(mymap);
+            let position = marker.getLatLng();
 
-          document.getElementById('latitude').value = position.lat;
-          document.getElementById('longitude').value = position.lng
+            document.getElementById('latitude').value = position.lat;
+            document.getElementById('longitude').value = position.lng
 
 
-          console.log("You clicked the map at lat: " + position.lat);
-          console.log("You clicked the map at lng: " + position.lng);
-        });
-      </script>
-      <script src="/scripts/modal.js"></script>
+            console.log("You clicked the map at lat: " + position.lat);
+            console.log("You clicked the map at lng: " + position.lng);
+          });
+        </script>
+        <script src="/scripts/modal.js"></script>
 </body>
 
 </html>

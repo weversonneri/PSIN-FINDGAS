@@ -24,14 +24,13 @@
 
 </head>
 
-<body class="bg-gray-100 font-title">
+<body class="bg-gray-100 font-title flex flex-col h-screen">
 
   <%- include('../components/navbar'); -%>
 
     <%- include('../components/alerts'); -%>
 
-      <main>
-
+      <main class=" flex-grow">
         <div class=" flex flex-col m-4 sm:m-7">
           <h1 class=" text-lg sm:text-2xl text-left font-bold text-gray-700">
             DASHBOARD
@@ -147,12 +146,10 @@
         </div>
       </dialog>
 
-      <footer>
-        <%- include('../components/footer'); %>
-      </footer>
+      <%- include('../components/footer'); %>
 
-      <script src="/scripts/index.js"></script>
-      <script src="/scripts/modal.js"></script>
+        <script src="/scripts/index.js"></script>
+        <script src="/scripts/modal.js"></script>
 </body>
 
 </html>

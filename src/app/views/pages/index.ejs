@@ -35,12 +35,12 @@
 
 </head>
 
-<body class="bg-gray-200 font-title">
+<body class="bg-gray-200 font-title flex flex-col h-screen">
 
   <%- include('../components/navbar'); -%>
 
     <%- include('../components/alerts'); -%>
-      <main>
+      <main class=" flex-grow">
         <section class=" flex justify-center align-middle bg-gray-100">
           <div class=" flex-col">
             <h1 class=" m-3 md:m-7 text-xl sm:text-2xl md:text-3xl text-center font-bold text-gray-700">
@@ -67,13 +67,24 @@
         </section>
       </main>
 
-      <footer>
-        <%- include('../components/footer'); %>
-      </footer>
+      <div id="test" class="flex items-center justify-between -mx-1.5">
+        <p class=" text-xs md:text-sm text-red-900">${item.name}</p>
+        <p class=" text-xs text-red-900">${item.phone}</p>
+        <p class=" text-xs text-red-900">Preço do gas</p>
+        <p class=" text-xs md:text-sm text-red-900">R$ 85,00</p>
+        <a href="/provider-detail/${item.id}" class=" ml-2 p-1 bg-blue-500 hover:bg-blue-600 rounded-md "
+          title="Detalhes">
+          <svg class="h-5 w-5 stroke-current text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+            viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
 
+      <%- include('../components/footer'); %>
 
-      <script src="/scripts/map.js"></script>
-      <script src="/scripts/modal.js"></script>
+        <script src="/scripts/map.js"></script>
+        <script src="/scripts/modal.js"></script>
 
 </body>
 

@@ -23,13 +23,13 @@
 
 </head>
 
-<body class="bg-gray-100 font-title">
+<body class="bg-gray-100 font-title flex flex-col h-screen">
 
   <%- include('../components/arrow-header', { title: 'Detalhes' }); -%>
 
     <%- include('../components/alerts'); -%>
 
-      <main>
+      <main class=" flex-grow">
 
         <h1 class=" m-4 md:m-7 text-2xl md:text-3xl text-center font-bold text-gray-700">
           Detalhes da distribuidora
@@ -110,24 +110,21 @@
         </section>
       </main>
 
-      <footer>
-        <%- include('../components/footer'); %>
-      </footer>
+      <%- include('../components/footer'); %>
 
+        <script>
 
-      <script>
+          let lat = document.getElementById('latitude').value;
+          let lng = document.getElementById('longitude').value;
+          const mymap = L.map('mapid').setView([lat, lng], 12);
+          L.marker([lat, lng]).addTo(mymap)
 
-        let lat = document.getElementById('latitude').value;
-        let lng = document.getElementById('longitude').value;
-        const mymap = L.map('mapid').setView([lat, lng], 12);
-        L.marker([lat, lng]).addTo(mymap)
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+          }).addTo(mymap);
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        }).addTo(mymap);
-
-      </script>
-      <script src="/scripts/modal.js"></script>
+        </script>
+        <script src="/scripts/modal.js"></script>
 </body>
 
 </html>

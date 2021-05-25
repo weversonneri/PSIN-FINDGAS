@@ -23,13 +23,13 @@
 
 </head>
 
-<body class="bg-gray-100 font-title">
+<body class="bg-gray-100 font-title flex flex-col h-screen">
 
   <%- include('../components/navbar'); -%>
 
     <%- include('../components/alerts'); -%>
 
-      <main>
+      <main class=" flex-grow">
 
         <h1 class=" m-4 md:m-7 text-xl md:text-3xl text-center font-bold text-gray-700">
           Dados do novo endereço
@@ -88,34 +88,31 @@
         </section>
       </main>
 
-      <footer>
-        <%- include('../components/footer'); %>
-      </footer>
+      <%- include('../components/footer'); %>
+
+        <script>
+          const mymap = L.map('mapid').setView([-15.7977541, -47.8997705], 12);
+
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+          }).addTo(mymap);
+          let marker = null;
+
+          mymap.on('click', function (e) {
+            if (marker !== null) {
+              mymap.removeLayer(marker);
+            }
+            marker = L.marker(e.latlng).addTo(mymap);
+            let position = marker.getLatLng();
+
+            document.getElementById('latitude').value = position.lat;
+            document.getElementById('longitude').value = position.lng
 
 
-      <script>
-        const mymap = L.map('mapid').setView([-15.7977541, -47.8997705], 12);
-
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        }).addTo(mymap);
-        let marker = null;
-
-        mymap.on('click', function (e) {
-          if (marker !== null) {
-            mymap.removeLayer(marker);
-          }
-          marker = L.marker(e.latlng).addTo(mymap);
-          let position = marker.getLatLng();
-
-          document.getElementById('latitude').value = position.lat;
-          document.getElementById('longitude').value = position.lng
-
-
-          console.log("You clicked the map at lat: " + position.lat);
-          console.log("You clicked the map at lng: " + position.lng);
-        });
-      </script>
+            console.log("You clicked the map at lat: " + position.lat);
+            console.log("You clicked the map at lng: " + position.lng);
+          });
+        </script>
 </body>
 
 </html>

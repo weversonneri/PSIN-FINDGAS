@@ -23,11 +23,11 @@
 
 </head>
 
-<body class="bg-gray-100 font-title">
+<body class="bg-gray-100 font-title flex flex-col h-screen">
 
   <%- include('../components/navbar'); -%>
 
-    <main>
+    <main class=" flex-grow">
       <div class=" absolute right-0 top-0">
         <%- include('../components/alerts'); -%>
       </div>
@@ -82,9 +82,7 @@
       </section>
     </main>
 
-    <footer>
-      <%- include('../components/footer'); %>
-    </footer>
+    <%- include('../components/footer'); %>
 
 </body>
 
