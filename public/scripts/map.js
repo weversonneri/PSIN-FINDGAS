@@ -87,12 +87,12 @@ const getData = async () => {
             <div class=" -space-y-0.5 ">
               <p class=" text-xs text-gray-800">Gas de cozinha 13Kg</p>
               <p class=" text-sm text-gray-800 font-bold">R$ 85,00</p>
-              <p class=" text-xs text-gray-900 break-words">Deposito nome</p>
+              <p class=" text-xs text-gray-900 break-words">${item.name}</p>
             </div>
 
             <a class=" flex items-center space-x-1">
               <i class="fas fa-phone-alt stroke-current text-gray-800 text-xs"></i>
-              <p class=" text-xs text-gray-800">(61)9 999-9999</p>
+              <p class=" text-xs text-gray-800">${item.phone}</p>
             </a>
           </div>
           <a href="/provider-detail/${item.id}"
