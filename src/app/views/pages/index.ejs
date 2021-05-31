@@ -17,13 +17,21 @@
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
     crossorigin=""></script>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet-geosearch@3.0.0/dist/geosearch.css" />
 
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
     integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
   <link rel="stylesheet" href="/build/tailwind.css" />
   <link rel="stylesheet" href="/styles/styles.css" />
   <link rel="stylesheet" href="/styles/tailwind.css" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js"
+    charset="utf-8"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-geosearch@3.0.0/dist/geosearch.css" />
+  <script src="https://unpkg.com/leaflet-geosearch@3.3.2/dist/geosearch.umd.js"></script>
+
 
   <style>
     /* css to customize Leaflet default styles  */
@@ -72,16 +80,27 @@
               <h3 class=" font-normal text-gray-500 text-xs md:text-sm text-center mb-3">Distribuidoras localizadas no
                 mapa
               </h3>
-              <div id="mapid" class="z-0 w-auto h-64 md:h-80 lg:h-96 rounded"></div>
+              <div id="mapid" class="z-0 w-auto h-72 md:h-80 lg:h-96 rounded"></div>
             </div>
           </div>
         </section>
       </main>
+      <div class=" h-40">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- ad footer -->
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6151375810087921"
+          data-ad-slot="9588304466" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      </div>
 
       <%- include('../components/footer'); %>
 
         <script src="/scripts/map.js"></script>
         <script src="/scripts/modal.js"></script>
+
+
 
 </body>
 

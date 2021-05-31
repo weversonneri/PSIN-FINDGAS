@@ -5,6 +5,15 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 }).addTo(mymap);
 
+L.control.locate().addTo(mymap);
+
+const search = new GeoSearch.GeoSearchControl({
+  style: 'bar',
+  provider: new GeoSearch.AlgoliaProvider(),
+});
+
+mymap.addControl(search);
+
 const mapIcon = L.icon({
   iconUrl: '/images/gas.svg',
   iconSize: [24, 80],
@@ -57,13 +66,13 @@ const getData = async () => {
             </div>
 
             <a href="https://api.whatsapp.com/send?phone=${item.phone}&text=${item.name}" target="_blank"
-              class=" flex items-center space-x-1">
-              <i class="fab fa-whatsapp stroke-current text-green-800 text-sm sm:text-base"></i>
-              <p class=" text-xs sm:text-sm">${item.phone}</p>
+              class=" flex items-center justify-center space-x-1 mb-5 mt-1 bg-green-700 rounded-md">
+              <i class="fab fa-whatsapp stroke-current text-white text-sm sm:text-base"></i>
+              <small class=" text-xs sm:text-sm text-white font-bold">${item.phone}</small>
             </a>
           </div>
           <a href="/provider-detail/${item.id}"
-            class=" ml-6 my-4 p-1 flex items-center bg-blue-500 hover:bg-blue-600 rounded-md " title="Detalhes">
+            class=" ml-6 my-4 p-1 flex items-center bg-yellow-400 hover:bg-yellow-500 rounded-md " title="Detalhes">
             <svg class="h-5 w-5 stroke-current text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
               viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
