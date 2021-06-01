@@ -15,7 +15,7 @@ routes.get('/', MapController.create);
 routes.get('/map', MapController.index);
 routes.get('/terms-of-use', PagesController.createTOF);
 routes.get('/privacy-policy', PagesController.createPP);
-routes.get('/beprovider', notAuthMiddleware, PagesController.createBPro);
+routes.get('/beprovider', PagesController.createBPro);
 routes.get('/provider-detail/:detail_id', MapController.show);
 
 routes.get('/sendmail', NodemailerController.create);
