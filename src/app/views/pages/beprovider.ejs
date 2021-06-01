@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="#">
+  <title>Cadastre revenda</title>
+
+  <link rel="stylesheet" href="/build/tailwind.css" />
+  <link rel="stylesheet" href="/styles/styles.css" />
+  <link rel="stylesheet" href="/styles/tailwind.css" />
+
+</head>
+
+<body class="bg-gray-200 font-title flex flex-col h-screen">
+
+  <%- include('../components/navbar'); -%>
+
+    <%- include('../components/alerts'); -%>
+
+      <main class=" flex-grow p-4 sm:p-0">
+        <section class="bg-white p-4 sm:p-12 rounded-md m-auto mt-4 md:mt-10 w-full sm:w-11/12 md:max-w-2xl  ">
+          <span class=" flex flex-col items-center">
+            <h2 class=" text-xl font-bold mb-3 text-indigo-500">Você é um Revendedor de Gás?</h2>
+            <h3> Cadastre-se e aumente suas vendas</h3>
+          </span>
+          <p class=" mt-10">Envie uma solicitação para o seguinte email</p>
+          <p>
+            <li class="md:mr-6 cursor-pointer list-disc list-inside">
+              <a href='mailto:agentavery@sample.com?subject=Solicitação%20de%20suporte'
+                class="text-indigo-800 hover:text-indigo-600 ">
+                contato@mail.com
+              </a>
+            </li>
+          </p>
+
+          <p class=" mt-10">Com os seguintes dados:</p>
+          <ul class=" list-disc list-inside text-sm py-2 px-4 space-y-2">
+            <li> Nome</li>
+            <li>Endereço de e-mail</li>
+            <li>CNPJ da empresa</li>
+            <li>Telefone</li>
+          </ul>
+
+        </section>
+      </main>
+
+      <%- include('../components/footer'); %>
+
+</body>
+
+</html>

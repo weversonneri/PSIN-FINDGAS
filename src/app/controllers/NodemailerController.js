@@ -10,7 +10,7 @@ module.exports = {
     console.log(process.env.NODEMAILMER_USER, process.env.NODEMAILMER_PASS);
 
     const transporter = nodemailer.createTransport({
-      service: 'Hotmail',
+      service: 'Outlook365',
       auth: {
         user: process.env.NODEMAILMER_USER,
         pass: process.env.NODEMAILMER_PASS,
@@ -18,7 +18,7 @@ module.exports = {
     });
     console.log('AMIL', email);
     const msg = {
-      from: `'${email}'`,
+      from: email,
       to: 'wedneri15@hotmail.com',
       subject: 'Hello, world',
       text: `Long time no see ${email}`,

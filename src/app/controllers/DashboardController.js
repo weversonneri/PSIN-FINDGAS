@@ -47,6 +47,9 @@ module.exports = {
           model: User,
           attributes: ['subscription'],
         },
+        order: [
+          ['updated_at', 'DESC'],
+        ],
       });
       if (req.user.scope_id === 1) {
         return res.redirect('/admin-dashboard');

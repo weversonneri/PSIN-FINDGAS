@@ -9,5 +9,8 @@ module.exports = {
       user: req.user,
     });
   },
+  createBPro(req, res) {
+    return res.render('pages/beprovider');
+  },
 
 };
