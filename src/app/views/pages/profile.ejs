@@ -310,7 +310,9 @@
 
 
         <% if(user.subscription==='P' ) {%>
-          <script src="//code-sa1.jivosite.com/widget/Jpc0pjN3Ic" async></script>
+          <script src="//code-sa1.jivosite.com/widget/Jpc0pjN3Ic" async>function jivo_onOpen() {
+              console.log('Widget opened');
+            }</script>
 
           <% } %>
 

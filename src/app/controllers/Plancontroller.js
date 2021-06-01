@@ -38,6 +38,3 @@ module.exports = {
   },
 
 };
-// 'https://www.mercadopago.com.br/subscriptions/checkout?preapproval_plan_id=2c93808478f916c701790b89e99e0b36'
-
-// https://findgas.herokuapp.com/?preapproval_id=2c93808479aa1ad30179c34cbd480746

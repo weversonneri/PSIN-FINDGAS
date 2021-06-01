@@ -23,34 +23,30 @@
 
       <main class=" flex-grow">
 
-        <section class=" bg-white p-12 rounded-md m-auto mt-10 container max-w-3xl">
-          <div>
-            <h1 class=" m-4 md:m-7 text-2xl md:text-3xl text-center font-bold text-gray-700">
-              Login
-            </h1>
-          </div>
+        <section
+          class=" flex flex-col justify-between bg-white p-8 sm:p-12 rounded-md m-auto mt-10 w-11/12 sm:w-3/4 max-w-lg ">
 
-          <form class=" w-full max-w-xl mx-auto" id="users-form" method="post" action="/login">
+          <h1 class=" m-4 md:m-7 text-2xl md:text-3xl text-center font-bold text-gray-700">
+            Login
+          </h1>
 
-            <div class=" ">
-              <label for="email" class="block mb-2 mt-4 text-sm md:text-base font-bold text-gray-500">Email</label>
-              <input
-                class="rounded p-3 md:p-4 w-full flex-1 text-base md:text-lg text-gray-700 border-gray-200 bg-gray-100 focus:bg-gray-200 outline-none"
-                type="email" name="email" required />
-            </div>
+          <form class=" w-full m-auto" id="login-form" method="post" action="/login">
 
-            <div class=" ">
-              <label for="password" class="block mb-2 mt-4 text-sm md:text-base font-bold text-gray-500">Senha</label>
-              <input
-                class="rounded p-3 md:p-4 w-full flex-1 text-base md:text-lg text-gray-700 border-gray-200 bg-gray-100 focus:bg-gray-200 outline-none"
-                type="password" name="password" required />
-            </div>
+            <label for="email" class="block mb-2 mt-4 text-sm md:text-base font-bold text-gray-500">Email</label>
+            <input
+              class="rounded-md p-3 md:p-4 w-full flex-1 text-base md:text-lg text-gray-700 border-gray-200 bg-gray-100 focus:bg-gray-200 outline-none"
+              type="email" name="email" required />
 
-            <div
-              class=" flex justify-center bg-indigo-500 w-full rounded hover:bg-indigo-800 mt-14 transition duration-500 transform hover:-translate-y-1 hover:scale-105">
-              <button class=" w-full p-3 text-base outline-none focus:outline-none border-transparent text-white"
-                type="submit">Enviar</button>
-            </div>
+            <label for="password" class="block mb-2 mt-4 text-sm md:text-base font-bold text-gray-500">Senha</label>
+            <input
+              class="rounded-md p-3 md:p-4 w-full flex-1 text-base md:text-lg text-gray-700 border-gray-200 bg-gray-100 focus:bg-gray-200 outline-none"
+              type="password" name="password" required />
+
+            <button type="submit" title="Entrar" form="login-form"
+              class=" p-2 md:p-3 mt-10 bg-green-600 hover:bg-green-700 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none rounded-md ">
+              Entrar
+            </button>
+
           </form>
         </section>
 

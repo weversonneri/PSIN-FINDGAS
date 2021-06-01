@@ -3,7 +3,9 @@ const { User } = require('../models');
 
 module.exports = {
   create(req, res) {
-    return res.render('pages/register');
+    return res.render('pages/register', {
+      user: req.user,
+    });
   },
 
   /* async index(req, res) {
