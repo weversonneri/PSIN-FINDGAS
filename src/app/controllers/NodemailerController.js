@@ -16,9 +16,9 @@ module.exports = {
         pass: process.env.NODEMAILMER_PASS,
       },
     });
-
+    console.log('AMIL', email);
     const msg = {
-      from: 'weversontest@hotmail.com',
+      from: `'${email}'`,
       to: 'wedneri15@hotmail.com',
       subject: 'Hello, world',
       text: `Long time no see ${email}`,

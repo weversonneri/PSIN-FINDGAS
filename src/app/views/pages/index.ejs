@@ -98,12 +98,14 @@
 
       <%- include('../components/footer'); %>
 
-        <% if(user.subscription==='P' ) {%>
-          <script async data-id="79929" src="https://cdn.widgetwhats.com/script.min.js"></script>
-          <% } %>
+        <% if (typeof user !=='undefined' ) { %>
+          <% if(user.subscription==='P' ) {%>
+            <script async data-id="79929" src="https://cdn.widgetwhats.com/script.min.js"></script>
+            <% } %>
+              <% } %>
 
-            <script src="/scripts/map.js"></script>
-            <script src="/scripts/modal.js"></script>
+                <script src="/scripts/map.js"></script>
+                <script src="/scripts/modal.js"></script>
 
 
 
