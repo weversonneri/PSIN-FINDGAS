@@ -4,7 +4,7 @@ const { PlanId } = require('../models');
 module.exports = {
   async store(req, res) {
     try {
-      const req_query = req.query.preapproval_plan_id;
+      const req_query = req.query.preapproval_id;
       const req_user = req.user.id;
 
       if (!req_query || !req_user) {
