@@ -57,16 +57,18 @@ const getData = async () => {
         const marker = L.marker([item.latitude, item.longitude], { icon: mapIconPro }).addTo(mymap);
 
         const popup = L.popup()
-          .setContent(`<div id="" class="flex max-w-xs -m-1.5">
+          .setContent(`<div id="" class="flex max-w-xs  -m-1.5">
           <div class="">
-            <div class=" space-y-0.5">
+            <div class="space-y-0.5">
               <p class=" text-xs text-gray-900">Gas de cozinha 13Kg</p>
-              <p class=" text-base md:text-lg text-gray-900 font-bold">R$ 85,00</p>
+              <span class="flex items-center space-x-1 ">
+              <small class="text-xs text-gray-900">R$ </small>
+              <p class="text-base md:text-lg text-gray-900 font-bold"> ${item.gasprice}</p>
+              </span>
               <p class=" text-sm md:text-base text-gray-900 break-words">${item.name}</p>
             </div>
-
-            <a href="https://api.whatsapp.com/send?phone=${item.phone}&text=${item.name}" target="_blank"
-              class=" flex items-center justify-center space-x-1 mb-5 mt-1 bg-green-700 rounded-md">
+            <a href="https://api.whatsapp.com/send?phone=+55${item.phone}&text=Olá,%20gastaria%20de%20pedir%20um%20gas." target="_blank"
+              class=" flex items-center justify-center space-x-1 mb-5 mt-1 px-2 bg-green-700 rounded-md">
               <i class="fab fa-whatsapp stroke-current text-white text-sm sm:text-base"></i>
               <small class=" text-xs sm:text-sm text-white font-bold">${item.phone}</small>
             </a>
@@ -92,10 +94,10 @@ const getData = async () => {
 
         const popup = L.popup()
           .setContent(`<div class="flex max-w-xs -m-1.5">
-          <div class=" -space-y-3 ">
+          <div class=" ">
             <div class=" -space-y-0.5 ">
               <p class=" text-xs text-gray-800">Gas de cozinha 13Kg</p>
-              <p class=" text-sm text-gray-800 font-bold">R$ 85,00</p>
+              <p class=" text-xs text-gray-800 font-bold">R$ ${item.gasprice}</p>
               <p class=" text-xs text-gray-900 break-words">${item.name}</p>
             </div>
 

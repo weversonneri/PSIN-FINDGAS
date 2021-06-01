@@ -18,6 +18,10 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(models.VendorData, {
         foreignKey: 'user_id',
       });
+
+      User.hasOne(models.PlanId, {
+        foreignKey: 'user_id',
+      });
     }
   }
   User.init({
@@ -48,6 +52,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.ENUM('N', 'P'),
       defaultValue: 'N',
       allowNull: false,
+    },
+    phone: {
+      type: DataTypes.STRING,
+      allowNull: true,
     },
     password_hash: {
       type: DataTypes.STRING,

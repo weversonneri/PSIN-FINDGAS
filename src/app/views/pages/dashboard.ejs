@@ -71,29 +71,34 @@
 
               <div class="card " data-id="<%= address.id %>">
                 <div
-                  class=" flex bg-white border-l-2 border-gray-300 text-sm sm:text-base p-5 sm:p-6 rounded-md m-auto mt-3 sm:mt-4 ">
+                  class=" flex items-center bg-white border-l-2 text-gray-600 border-gray-300 text-sm sm:text-base p-5 rounded-md m-auto mt-3 sm:mt-4 ">
                   <p>
                     <%= i +=1 %>
                   </p>
-                  <div class=" flex justify-between w-full ml-3 sm:ml-6 md:ml-10 sm:flex-wrap">
-
+                  <div class=" flex items-center justify-between w-full ml-3 sm:ml-6 md:ml-10 ">
                     <div class=" flex-1">
-                      <p>
+                      <p class=" text-base sm:text-lg font-semibold">
                         <%= address.name %>
                       </p>
                     </div>
                     <div class=" hidden md:flex flex-1 justify-center">
-                      <p class=" ">
-                        <%= address.phone %>
-                      </p>
+                      <span class=" flex-col">
+                        <small class=" text-xs text-gray-400">Telefone</small>
+                        <p class=" ">
+                          <%= address.phone %>
+                        </p>
+                      </span>
                     </div>
-                    <div class=" relative hidden sm:flex flex-1">
-                      <p class=" absolute right-0">
-                        algo
-                      </p>
+                    <div class=" relative hidden md:flex items-center flex-1">
+                      <span class=" flex-col">
+                        <small class=" text-xs text-gray-400">Preço</small>
+                        <p class=" ">
+                          R$ <%= address.gasprice %>
+                        </p>
+                      </span>
                     </div>
 
-                    <div class=" ml-6">
+                    <div class=" ml-6 ">
                       <a class=" focus:outline-none" title="Editar" href="/vendordata/<%= address.id %>">
                         <i
                           class="fal fa-pen text-sm text-blue-600 hover:text-blue-700 bg-gray-100 hover:bg-gray-300 px-2 py-1 sm:px-3 sm:py-2 rounded-md transition ease-in duration-200"></i>
@@ -142,14 +147,17 @@
               </div>
             </div>
           </div>
-
         </div>
       </dialog>
 
       <%- include('../components/footer'); %>
 
-        <script src="/scripts/index.js"></script>
-        <script src="/scripts/modal.js"></script>
+        <% if(user.subscription==='P' ) {%>
+          <script src="//code-sa1.jivosite.com/widget/Jpc0pjN3Ic" async></script>
+
+          <% } %>
+            <script src="/scripts/index.js"></script>
+            <script src="/scripts/modal.js"></script>
 </body>
 
 </html>

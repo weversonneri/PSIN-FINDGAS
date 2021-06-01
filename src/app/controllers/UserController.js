@@ -80,6 +80,7 @@ module.exports = {
         email,
         password,
         new_password,
+        phone,
       } = req.body;
 
       if (new_password) {
@@ -96,7 +97,9 @@ module.exports = {
         }
       }
 
-      await user.update({ name, email, password: new_password });
+      await user.update({
+        name, email, phone, password: new_password,
+      });
 
       req.flash('message', 'Cadastro atualizado!');
       return res.status(201).redirect('/profile');

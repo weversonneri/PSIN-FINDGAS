@@ -14,6 +14,10 @@ module.exports = (sequelize, DataTypes) => {
       VendorData.belongsTo(models.User, {
         foreignKey: 'user_id',
       });
+
+      VendorData.hasMany(models.Product, {
+        foreignKey: 'vendor_id',
+      });
     }
   }
   VendorData.init({
@@ -34,6 +38,12 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: '0',
     },
     user_id: DataTypes.INTEGER,
+    gasprice: {
+      type: DataTypes.STRING,
+    },
+    address: {
+      type: DataTypes.STRING,
+    },
   }, {
     sequelize,
     modelName: 'VendorData',

@@ -8,13 +8,14 @@
   <link rel="shortcut icon" href="#">
   <title>Admin dashboard</title>
 
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-    crossorigin="" />
 
-  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-    crossorigin=""></script>
+  <link href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet">
+
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+
 
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
     integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
@@ -24,20 +25,84 @@
 
 </head>
 
-<body class="bg-gray-100 font-title">
+<body class="bg-gray-100 font-title flex flex-col h-screen">
 
   <%- include('../components/navbar'); -%>
 
-    <div class=" absolute right-0 top-0">
-      <%- include('../components/alerts'); -%>
-    </div>
-    <h2>DASHBOARD ADEMIR<h2>
+    <%- include('../components/alerts'); -%>
+
+      <main class=" flex-grow">
+        <section class="flex flex-col mx-auto m-7 w-11/12 sm:w-4/5 max-w-4xl">
+
+          <div class=" ">
+            <h1 class=" text-lg sm:text-2xl text-left font-bold text-gray-700">
+              DASHBOARD ADMIN
+            </h1>
+            <p class=" text-xs sm:text-sm">Gerencie os usuarios do site</p>
+          </div>
+          <div class=" grid grid-cols-6 gap-6">
+            <hr class=" col-start-1 col-end-5 my-auto" />
+            <a href="/register"
+              class="py-2 px-3 col-end-7 col-span-2 bg-green-600 hover:bg-green-700 focus:ring-green-500 focus:ring-offset-indigo-200 text-white transition ease-in duration-200 text-center text-xs sm:text-sm md:text-base font-semibold shadow-md focus:outline-none rounded-md ">
+              Novo cliente
+            </a>
+          </div>
+        </section>
+
+        <div class=" m-auto w-11/12 sm:w-4/5 max-w-4xl">
+
+          <table id="example" class="display" style="width:100%">
+            <thead>
+              <tr>
+                <th class="text-sm text-gray-800">Nome</th>
+                <th class="text-sm text-gray-800">Email</th>
+                <th class="text-sm text-gray-800">Plano</th>
+                <th class="text-sm text-gray-800">Ação</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% datas.forEach((data)=> { %>
+                <tr>
+                  <td class=" text-xs sm:text-sm text-gray-800">
+                    <%= data.name %>
+                  </td>
+                  <td class=" text-xs sm:text-sm text-gray-800">
+                    <%= data.email %>
+                  </td>
+                  <td class=" text-xs sm:text-sm text-gray-800">
+                    <% if(data.subscription==='P' ) {%>
+                      Pro
+                      <% } else { %>
+                        Normal
+                        <% } %>
+                  </td>
+                  <td class=" flex items-center justify-center">
+                    <a class=" focus:outline-none" title="Editar" href="/admin-edit-user/<%= data.id %>">
+                      <i
+                        class="fal fa-pen text-sm text-blue-600 hover:text-blue-700 bg-gray-100 hover:bg-gray-300 px-2 py-1 sm:px-3 sm:py-2 rounded-md transition ease-in duration-200"></i>
+                    </a>
+                  </td>
+                </tr>
+                <% }) %>
+            </tbody>
+
+          </table>
+        </div>
 
 
-        <footer>
-          <%- include('../components/footer'); %>
-        </footer>
 
+      </main>
+
+      <%- include('../components/footer'); %>
+
+        <script>
+          $(document).ready(function () {
+            $('#example').DataTable({
+              "pagingType": "full_numbers"
+            });
+          });
+
+        </script>
         <script src="/scripts/index.js"></script>
         <script src="/scripts/modal.js"></script>
 </body>

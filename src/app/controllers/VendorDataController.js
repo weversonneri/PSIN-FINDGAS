@@ -15,7 +15,7 @@ module.exports = {
 
       const datas = await VendorData.findOne({
         where: { user_id: user, id: vendordata_id },
-        attributes: ['id', 'name', 'phone', 'latitude', 'longitude'],
+        attributes: ['id', 'name', 'phone', 'latitude', 'longitude', 'gasprice', 'address'],
       });
       return res.render('pages/vendorData-edit', { user: req.user, datas });
     } catch (error) {
@@ -33,6 +33,8 @@ module.exports = {
         phone,
         latitude,
         longitude,
+        gasprice,
+        address,
       } = req.body;
 
       const user = await User.findByPk(user_id);
@@ -56,6 +58,8 @@ module.exports = {
         latitude,
         longitude,
         user_id,
+        gasprice,
+        address,
       });
 
       req.flash('message', 'Endereço cadastrado');

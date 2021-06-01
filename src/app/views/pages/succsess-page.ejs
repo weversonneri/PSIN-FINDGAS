@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="#">
+  <title>Succsess Page</title>
+
+
+  <link rel="stylesheet" href="/build/tailwind.css" />
+  <link rel="stylesheet" href="/styles/styles.css" />
+  <link rel="stylesheet" href="/styles/tailwind.css" />
+
+</head>
+
+<body class="bg-gray-100 font-title flex flex-col h-screen">
+
+  <%- include('../components/navbar'); -%>
+
+    <main class=" flex-grow">
+      <section class="mt-10 flex flex-col justify-center items-center space-y-4">
+        <img class="  w-20 h-20" src="/images/check.svg" alt="sucesso">
+        <h1 class=" text-2xl text-green-600 font-semibold">Plano assinado com sucesso!</h1>
+        <p>Cancele a qualquer momento atraves do chat ou pelo email de suporte</p>
+      </section>
+
+    </main>
+
+
+    <%- include('../components/footer'); %>
+
+
+</body>
+
+</html>

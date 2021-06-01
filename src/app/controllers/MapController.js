@@ -10,7 +10,7 @@ module.exports = {
   async index(req, res) {
     try {
       const local = await VendorData.findAll({
-        attributes: ['id', 'name', 'phone', 'latitude', 'longitude'],
+        attributes: ['id', 'name', 'phone', 'latitude', 'longitude', 'address', 'gasprice'],
         include: {
           model: User,
           attributes: ['subscription'],
@@ -28,7 +28,7 @@ module.exports = {
 
       const data = await VendorData.findOne({
         where: { id: detail_id },
-        attributes: ['name', 'phone', 'latitude', 'longitude'],
+        attributes: ['name', 'phone', 'latitude', 'longitude', 'address', 'gasprice'],
       });
 
       return res.render('pages/provider-detail', { data });

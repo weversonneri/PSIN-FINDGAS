@@ -3,14 +3,14 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.addColumn('users', 'subscription', {
-      type: Sequelize.ENUM('N', 'P'),
-      defaultValue: 'N',
+    await queryInterface.addColumn('vendor_data', 'address', {
+      type: Sequelize.STRING,
+      defaultValue: '',
       allowNull: false,
     });
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.removeColumn('users', 'subscription');
+    await queryInterface.removeColumn('vendor_data', 'address');
   },
 };
