@@ -23,6 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(flash());
+app.enable('trust proxy');
 app.use(session({
   // eslint-disable-next-line global-require
   store: new (require('connect-pg-simple')(session))(),
