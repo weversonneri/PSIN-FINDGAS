@@ -57,29 +57,31 @@ const getData = async () => {
         const marker = L.marker([item.latitude, item.longitude], { icon: mapIconPro }).addTo(mymap);
 
         const popup = L.popup()
-          .setContent(`<div id="" class="flex max-w-xs  -m-1.5">
-          <div class="">
-            <div class="space-y-0.5">
+          .setContent(`<div id="" class="flex -m-2">
+          <div class=" flex flex-col">
+            <div class="-space-y-7">
               <p class=" text-xs text-gray-900">Gas de cozinha 13Kg</p>
-              <span class="flex items-center space-x-1 ">
+              <span class="flex items-center space-x-3">
               <small class="text-xs text-gray-900">R$ </small>
               <p class="text-base md:text-lg text-gray-900 font-bold"> ${item.gasprice}</p>
               </span>
-              <p class=" text-sm md:text-base text-gray-900 break-words">${item.name}</p>
+              <p class=" text-sm md:text-base text-gray-900 break-words pt-2">${item.name}</p>
             </div>
+            <div class=" flex space-x-1">
             <a href="https://api.whatsapp.com/send?phone=+55${item.phone}&text=Olá,%20gastaria%20de%20pedir%20um%20gas." target="_blank"
-              class=" flex items-center justify-center space-x-1 mb-5 mt-1 px-2 bg-green-700 rounded-md">
-              <i class="fab fa-whatsapp stroke-current text-white text-sm sm:text-base"></i>
+              class=" flex items-center justify-center space-x-1 mb-3 mt-1 px-2 py-0.5 bg-green-700 rounded-md">
+              <i class="fab fa-whatsapp stroke-current text-white text-sm "></i>
               <small class=" text-xs sm:text-sm text-white font-bold">${item.phone}</small>
             </a>
-          </div>
-          <a href="/provider-detail/${item.id}"
-            class=" ml-6 my-4 p-1 flex items-center bg-yellow-400 hover:bg-yellow-500 rounded-md " title="Detalhes">
-            <svg class="h-5 w-5 stroke-current text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+            <a href="/provider-detail/${item.id}"
+            class=" mb-3 mt-1 px-2 py-0.5 flex items-center bg-yellow-400 hover:bg-yellow-500 rounded-md " title="Detalhes">
+            <svg class="h-4 w-4 stroke-current text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
               viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
             </svg>
-          </a>
+            </a>
+          </div>
+          </div>
         </div>`);
         marker.bindTooltip('Anúncio',
           {
@@ -94,20 +96,20 @@ const getData = async () => {
 
         const popup = L.popup()
           .setContent(`<div class="flex max-w-xs -m-1.5">
-          <div class=" ">
+          <div class=" -space-y-3 ">
             <div class=" -space-y-0.5 ">
-              <p class=" text-xs text-gray-800">Gas de cozinha 13Kg</p>
-              <p class=" text-xs text-gray-800 font-bold">R$ ${item.gasprice}</p>
+              <p class=" text-xs text-gray-800 -mb-2 ">Gas de cozinha 13Kg</p>
+              <p class=" text-sm text-gray-800 font-bold">R$ ${item.gasprice}</p>
               <p class=" text-xs text-gray-900 break-words">${item.name}</p>
             </div>
 
-            <a class=" flex items-center space-x-1">
+            <a class=" flex items-center space-x-2">
               <i class="fas fa-phone-alt stroke-current text-gray-800 text-xs"></i>
               <p class=" text-xs text-gray-800">${item.phone}</p>
             </a>
           </div>
           <a href="/provider-detail/${item.id}"
-            class=" ml-4 my-4 p-1 flex items-center bg-blue-500 hover:bg-blue-600 rounded-md " title="Detalhes">
+            class=" ml-4 my-3 p-1 flex items-center bg-blue-500 hover:bg-blue-600 rounded-md " title="Detalhes">
             <svg class="h-4 w-4 stroke-current text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
               viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
